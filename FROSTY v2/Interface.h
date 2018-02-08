@@ -342,6 +342,8 @@ void RenderInterface() {
 						ImGui::Combo(XorStr("Hitbox"), &g_Options.Ragebot.Hitbox, aimBones, ARRAYSIZE(aimBones));
 						ImGui::PushItemWidth(260);
 						ImGui::SliderFloat(XorStr("Snipers"), &g_Options.Ragebot.HitchanceSniper, 0.f, 100.f, "%.1f");
+						ImGui::Separator();
+						ImGui::Separator();
 					}
 					ImGui::EndChild();
 
