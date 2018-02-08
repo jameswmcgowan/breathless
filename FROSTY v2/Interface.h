@@ -247,7 +247,7 @@ void RenderInterface() {
 			}ImGui::End();
 		}
 
-		if (ImGui::Begin("##chet", &is_renderer_active, ImVec2(750, 605), 1.f, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse))
+		if (ImGui::Begin("##chet", &is_renderer_active, ImVec2(750, 608), 1.f, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse))
 		{
 			static float r = 1.0f;
 			static float g = 0.f;
@@ -285,9 +285,10 @@ void RenderInterface() {
 			}
 
 			ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(r,g,b,1.f));
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(r, g, b, 1.f));
 
-			ImGui::Separator();
-
+			ImGui::BeginChild("##rainbotcrapnignog", ImVec2(733.f, 3.f));
+			ImGui::EndChild();
 			ImGui::PopStyleColor();
 
 			ImGui::Spacing();
@@ -298,6 +299,7 @@ void RenderInterface() {
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.07, 0.07, 0.07, 1.0));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.07, 0.07, 0.07, 1.0));
 				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.07, 0.07, 0.07, 1.0));
+				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, 1.f));
 				ImGui::PushFont(fskeet);
 				if (ImGui::Button("a", ImVec2(100, 93)))
 					tabselected = 0;
@@ -324,7 +326,7 @@ void RenderInterface() {
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.14f, 0.14f, 0.14f, 1.f));
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.17f, 0.17f, 0.17f, 1.f));
 				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.17f, 0.17f, 0.17f, 1.f));
-
+				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, 1.f));
 				ImGui::PushFont(fDefault);
 				if (tabselected == 0)
 				{
