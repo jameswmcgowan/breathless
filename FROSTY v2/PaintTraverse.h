@@ -96,7 +96,7 @@ void __fastcall hkPaintTraverse(PVOID pPanels, int edx, unsigned int vguiPanel, 
 			g_Engine->GetScreenSize(width, height);
 
 			std::time_t result = std::time(nullptr);
-			g_Render->Text(1, 1, Color(255, 255, 255, 255), g_Render->font.ESPMini, XorStr("www.frosty.pw"));
+			g_Render->Text(1, 1, Color(255, 255, 255, 255), g_Render->font.ESPMini, XorStr("breathless.cc"));
 			if (g_Engine->IsInGame() && g_Engine->IsConnected())
 			{
 				if (local->IsAlive())
