@@ -268,7 +268,7 @@ void RenderInterface() {
 				r = 0.f;
 				b += 0.005f;
 			}
-			if (r == 0.f && g <= 1.f && b <= 1.f)
+			if (r == 0.f && g <= 1.f && b >= 1.f)
 			{
 				b = 1.f;
 				g -= 0.005f;
@@ -284,7 +284,6 @@ void RenderInterface() {
 				b -= 0.005f;
 			}
 
-			ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(r,g,b,1.f));
 			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(r, g, b, 1.f));
 
 			ImGui::BeginChild("##rainbotcrapnignog", ImVec2(733.f, 3.f));
@@ -344,8 +343,6 @@ void RenderInterface() {
 						ImGui::Combo(XorStr("Hitbox"), &g_Options.Ragebot.Hitbox, aimBones, ARRAYSIZE(aimBones));
 						ImGui::PushItemWidth(260);
 						ImGui::SliderFloat(XorStr("Snipers"), &g_Options.Ragebot.HitchanceSniper, 0.f, 100.f, "%.1f");
-						ImGui::Separator();
-						ImGui::Separator();
 					}
 					ImGui::EndChild();
 
