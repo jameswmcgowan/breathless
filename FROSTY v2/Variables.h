@@ -31,7 +31,8 @@ struct Variables
 		int		KeyPress;
 		bool	AimStep;
 
-		//AA Builder
+		//AA Builder 
+		//THESE NOW BECOME WHAT I WILL SET DEPENDING ON THE MVOEMENT TYPE EXACMPLE: IF WERE WALKING { JITTER = WALK_JITTER; } //LESS CODE!
 		bool	BuilderAAs;
 		bool	Jitter;
 		bool	FJitter;
@@ -42,6 +43,67 @@ struct Variables
 		float	JitterRange;
 		float	FJitterRange;
 
+
+		//walking builder aa's
+		bool	walk_BuilderAAs;
+		bool	walk_Jitter;
+		bool	walk_FJitter;
+		bool	walk_LBYBreaker;
+		float	walk_BuilderReal;
+		float	walk_BuilderFake;
+		float	walk_BuilderPitch;
+		float	walk_JitterRange;
+		float	walk_FJitterRange;
+
+		//running builder aa's
+		bool	run_BuilderAAs;
+		bool	run_Jitter;
+		bool	run_FJitter;
+		bool	run_LBYBreaker;
+		float	run_BuilderReal;
+		float	run_BuilderFake;
+		float	run_BuilderPitch;
+		float	run_JitterRange;
+		float	run_FJitterRange;
+
+
+		//crouching builder aa's
+		bool	crouch_BuilderAAs;
+		bool	crouch_Jitter;
+		bool	crouch_FJitter;
+		bool	crouch_LBYBreaker;
+		float	crouch_BuilderReal;
+		float	crouch_BuilderFake;
+		float	crouch_BuilderPitch;
+		float	crouch_JitterRange;
+		float	crouuch_FJitterRange;
+
+		
+		//fakewalk builder aa's
+		bool	fwalk_BuilderAAs;
+		bool	fwalk_Jitter;
+		bool	fwalk_FJitter;
+		bool	fwalk_LBYBreaker;
+		float	fwalk_BuilderReal;
+		float	fwalk_BuilderFake;
+		float	fwalk_BuilderPitch;
+		float	fwalk_JitterRange;
+		float	fwalk_FJitterRange;
+
+		
+		//standing builder aa's
+		bool	stand_BuilderAAs;
+		bool	stand_Jitter;
+		bool	stand_FJitter;
+		bool	stand_LBYBreaker;
+		float	stand_BuilderReal;
+		float	stand_BuilderFake;
+		float	stand_BuilderPitch;
+		float	stand_JitterRange;
+		float	stand_FJitterRange;
+
+
+		
 
 		bool	EnabledAntiAim;
 		int		SubAATabs;
@@ -59,6 +121,53 @@ struct Variables
 		bool	KnifeAA;
 		bool	FakeLag;
 		int		FakeLagAmt;
+
+		// Pitch  PitchAdder  YawTrue  YawFakeAdder  YawFake  YawFakeAdder
+
+		//walking prebuilt aa
+		int		walk_Pitch;
+		float	walk_PitchAdder;
+		int		walk_YawTrue;
+		float	walk_YawFakeAdder;
+		int		walk_YawFake;
+		float	walk_YawFakeAdder;
+
+
+		//running prebuilt aa
+		int		run_Pitch;
+		float	run_PitchAdder;
+		int		run_YawTrue;
+		float	run_YawFakeAdder;
+		int		run_YawFake;
+		float	run_YawFakeAdder;
+
+		
+		//crouching prebuilt aa
+		int		crouch_Pitch;
+		float	crouch_PitchAdder;
+		int		crouch_YawTrue;
+		float	crouch_YawFakeAdder;
+		int		crouch_YawFake;
+		float	crouch_YawFakeAdder;
+
+
+		//fakewalk prebuilt aa fwalk
+		int		fwalk_Pitch;
+		float	fwalk_PitchAdder;
+		int		fwalk_YawTrue;
+		float	fwalk_YawFakeAdder;
+		int		fwalk_YawFake;
+		float	fwalk_YawFakeAdder;
+
+		
+		//standing prebuilt aa's 
+		int		stand_Pitch;
+		float	stand_PitchAdder;
+		int		stand_YawTrue;
+		float	stand_YawFakeAdder;
+		int		stand_YawFake;
+		float	stand_YawFakeAdder;
+
 
 
 		bool	FriendlyFire;

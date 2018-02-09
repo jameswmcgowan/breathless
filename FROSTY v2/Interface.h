@@ -374,13 +374,13 @@ void RenderInterface() {
 						if (ImGui::Button("Walk", ImVec2(55, 25)))
 							movementtype = 1;
 						ImGui::SameLine();
-						if (ImGui::Button("Jump", ImVec2(55, 25)))
+						if (ImGui::Button("Stand", ImVec2(55, 25)))
 							movementtype = 2;
 						ImGui::SameLine();
 						if (ImGui::Button("Fake", ImVec2(55, 25)))
 							movementtype = 3;
 						ImGui::SameLine();
-						if (ImGui::Button("more", ImVec2(55, 25)))
+						if (ImGui::Button("Crouch", ImVec2(55, 25)))
 							movementtype = 4;
 
 
@@ -400,9 +400,9 @@ void RenderInterface() {
 							ImGui::Checkbox(XorStr("AA On Run"), &g_Options.Ragebot.AA_onRun);
 
 							
-							if (ImGui::Button("Presets", ImVec2(149, 25))) aatabtype = 0;
+							if (ImGui::Button("Presets", ImVec2(150, 25))) aatabtype = 0;
 							ImGui::SameLine();
-							if (ImGui::Button("Self Made", ImVec2(149, 25))) aatabtype = 1;
+							if (ImGui::Button("Self Made", ImVec2(150, 25))) aatabtype = 1;
 
 							if (aatabtype == 0)
 							{
@@ -432,9 +432,9 @@ void RenderInterface() {
 							ImGui::Checkbox(XorStr("AA On Walk"), &g_Options.Ragebot.AA_onWalk);
 
 							
-							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype1 = 0;
+							if (ImGui::Button("Presets", ImVec2(150, 25))) aatabtype1 = 0;
 							ImGui::SameLine();
-							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype1 = 1;
+							if (ImGui::Button("Self Made", ImVec2(150, 25))) aatabtype1 = 1;
 
 							if (aatabtype1 == 0)
 							{
@@ -461,13 +461,13 @@ void RenderInterface() {
 							}
 							break;
 						case 2:
-							ImGui::Checkbox(XorStr("AA On Jump"), &g_Options.Ragebot.AA_onJump);
+							ImGui::Checkbox(XorStr("AA On Stand"), &g_Options.Ragebot.AA_onJump);
 							
 
 							
-							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype2 = 0;
+							if (ImGui::Button("Presets", ImVec2(150, 25))) aatabtype2 = 0;
 							ImGui::SameLine();
-							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype2 = 1;
+							if (ImGui::Button("Self Made", ImVec2(150, 25))) aatabtype2 = 1;
 
 							if (aatabtype2 == 0)
 							{
@@ -498,9 +498,9 @@ void RenderInterface() {
 							
 
 							
-							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype3 = 0;
+							if (ImGui::Button("Presets", ImVec2(150, 25))) aatabtype3 = 0;
 							ImGui::SameLine();
-							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype3 = 1;
+							if (ImGui::Button("Self Made", ImVec2(150, 25))) aatabtype3 = 1;
 
 							if (aatabtype3 == 0)
 							{
@@ -531,9 +531,9 @@ void RenderInterface() {
 							
 
 							
-							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype4 = 0;
+							if (ImGui::Button("Presets", ImVec2(150, 25))) aatabtype4 = 0;
 							ImGui::SameLine();
-							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype4 = 1;
+							if (ImGui::Button("Self Made", ImVec2(150, 25))) aatabtype4 = 1;
 
 							if (aatabtype4 == 0)
 							{
