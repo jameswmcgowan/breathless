@@ -21,7 +21,17 @@ private:
 	void DoNoRecoil(CInput::CUserCmd* pCmd);
 	bool AimAtPoint(C_BaseEntity* pLocal, Vector point, CInput::CUserCmd *pCmd);
 	void DoAimbot(CInput::CUserCmd *pCmd, bool& bSendPacket);
-	void DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket);
+	void DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket); //get rid of me eventually
+
+
+	//new antiaim shit for later shit
+	void DoAntiAim_onWalk(CInput::CUserCmd *pCmd, bool& bSendPacket);
+	void DoAntiAim_onJump(CInput::CUserCmd *pCmd, bool& bSendPacket);
+	void DoAntiAim_onRun(CInput::CUserCmd *pCmd, bool& bSendPacket);
+	void DoAntiAim_onFakeWalk(CInput::CUserCmd *pCmd, bool& bSendPacket);
+	void DoAntiAim_onCrouch(CInput::CUserCmd *pCmd, bool& bSendPacket);
+
+
 	void FakeLag(CInput::CUserCmd* cmd);
 	void PositionAdjustment(CInput::CUserCmd* pCmd);
 private:

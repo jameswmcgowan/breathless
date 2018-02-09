@@ -66,6 +66,12 @@ void CConfig::Setup()
 	SetupValue(g_Options.Ragebot.BAIMkey, 0, ("Ragebot"), ("BAIMKey"));
 
 
+	//new aa stuff going here
+	SetupValue(g_Options.Ragebot.AA_onCrouch, false, ("RageBot"), ("AACrouch"));
+	SetupValue(g_Options.Ragebot.AA_onFakeWalk, false, ("RageBot"), ("AAFakeWalk"));
+	SetupValue(g_Options.Ragebot.AA_onRun, false, ("RageBot"), ("AAJump"));
+	SetupValue(g_Options.Ragebot.AA_onWalk, false, ("RageBot"), ("AAWalk"));
+	SetupValue(g_Options.Ragebot.AA_onJump, false, ("RageBot"), ("AARun"));
 
 
 	SetupValue(g_Options.Legitbot.MainSwitch, false, ("Legitbot"), ("LegitToggle"));

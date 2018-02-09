@@ -392,19 +392,19 @@ void RenderInterface() {
 						switch (movementtype)
 						{
 						case 0:
-							ImGui::Text("run");
+							ImGui::Checkbox(XorStr("AA On Run"), &g_Options.Ragebot.AA_onRun);
 							break;
 						case 1:
-							ImGui::Text("walk");
+							ImGui::Checkbox(XorStr("AA On Walk"), &g_Options.Ragebot.AA_onWalk);
 							break;
 						case 2:
-							ImGui::Text("jump");
+							ImGui::Checkbox(XorStr("AA On Jump"), &g_Options.Ragebot.AA_onJump);
 							break;
 						case 3:
-							ImGui::Text("fake");
+							ImGui::Checkbox(XorStr("AA On FakeWalk"), &g_Options.Ragebot.AA_onFakeWalk);
 							break;
 						case 4:
-							ImGui::Text("more");
+							ImGui::Checkbox(XorStr("AA On Crouch"), &g_Options.Ragebot.AA_onCrouch);
 							break;
 						}
 

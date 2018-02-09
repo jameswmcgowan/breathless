@@ -92,7 +92,16 @@ struct Variables
 		bool	playerlist;
 		int		BAIMkey;
 		float	bruteAfterX;
-		bool	MovingAA;
+
+		
+		bool	MovingAA; //eventually get rid of this
+		
+		//and replace with this
+		bool	AA_onRun;
+		bool	AA_onWalk;
+		bool	AA_onCrouch;
+		bool	AA_onFakeWalk;
+		bool	AA_onJump;
 	} Ragebot;
 
 	struct
