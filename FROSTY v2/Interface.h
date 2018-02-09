@@ -310,7 +310,7 @@ void RenderInterface() {
 					tabselected = 3;
 				if (ImGui::Button("e", ImVec2(100, 93)))
 					tabselected = 4; 
-				if (ImGui::Button("f", ImVec2(100, 93)))
+				if (ImGui::Button("f", ImVec2(100, 91)))
 					tabselected = 5;
 				ImGui::PopFont();
 				
@@ -367,6 +367,7 @@ void RenderInterface() {
 					ImGui::BeginChild("##aa's", ImVec2(310.f, 288.f));
 					{
 						static int movementtype = 0;
+						
 						if (ImGui::Button("Run", ImVec2(55, 25)))
 							movementtype = 0;
 						ImGui::SameLine();
@@ -386,22 +387,177 @@ void RenderInterface() {
 
 						//more is placeholder idk what different movements there r i dont hvh at all. if there are no more than what i lsited just resize the buttons to all fit into 300 evenly so 75 (ImGui::Button("Run", ImVec2(75, 25)))
 						//also do all ur aa stuff inside of each of these.
+						static int aatabtype = 0;
+						static int aatabtype1 = 0;
+						static int aatabtype2 = 0;
+						static int aatabtype3 = 0;
+						static int aatabtype4 = 0;
+
 						switch (movementtype)
-						{
+						
 						case 0:
+						{
 							ImGui::Checkbox(XorStr("AA On Run"), &g_Options.Ragebot.AA_onRun);
+
+							
+							if (ImGui::Button("Presets", ImVec2(149, 25))) aatabtype = 0;
+							ImGui::SameLine();
+							if (ImGui::Button("Self Made", ImVec2(149, 25))) aatabtype = 1;
+
+							if (aatabtype == 0)
+							{
+								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
+								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.PitchAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Yaw"), &g_Options.Ragebot.YawTrue, antiaimyawtrue, ARRAYSIZE(antiaimyawtrue));
+								ImGui::SliderFloat(XorStr("Real Adder: "), &g_Options.Ragebot.YawTrueAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Fake-Yaw"), &g_Options.Ragebot.YawFake, antiaimyawfake, ARRAYSIZE(antiaimyawfake));
+								ImGui::SliderFloat(XorStr("Fake Adder: "), &g_Options.Ragebot.YawFakeAdder, -180, 180, "%1.f");
+							}
+							else if (aatabtype == 1)
+							{
+								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.BuilderAAs);
+								ImGui::SliderFloat(XorStr("Pitch Angle: "), &g_Options.Ragebot.BuilderPitch, -89, 89, "%1.f");
+								ImGui::SliderFloat(XorStr("Real Angle: "), &g_Options.Ragebot.BuilderReal, -180, 180, "%1.f");
+								ImGui::SliderFloat(XorStr("Fake Angle: "), &g_Options.Ragebot.BuilderFake, -180, 180, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Real Jitter"), &g_Options.Ragebot.Jitter);
+								ImGui::SliderFloat(XorStr("Jitter Range: "), &g_Options.Ragebot.JitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Fake Jitter"), &g_Options.Ragebot.FJitter);
+								ImGui::SliderFloat(XorStr("FJitter Range: "), &g_Options.Ragebot.FJitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("LBY Breaker"), &g_Options.Ragebot.LBYBreaker);
+							}
 							break;
 						case 1:
 							ImGui::Checkbox(XorStr("AA On Walk"), &g_Options.Ragebot.AA_onWalk);
+
+							
+							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype1 = 0;
+							ImGui::SameLine();
+							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype1 = 1;
+
+							if (aatabtype1 == 0)
+							{
+								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
+								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.PitchAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Yaw"), &g_Options.Ragebot.YawTrue, antiaimyawtrue, ARRAYSIZE(antiaimyawtrue));
+								ImGui::SliderFloat(XorStr("Real Adder: "), &g_Options.Ragebot.YawTrueAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Fake-Yaw"), &g_Options.Ragebot.YawFake, antiaimyawfake, ARRAYSIZE(antiaimyawfake));
+								ImGui::SliderFloat(XorStr("Fake Adder: "), &g_Options.Ragebot.YawFakeAdder, -180, 180, "%1.f");
+							}
+							else if (aatabtype1 == 1)
+							{
+								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.BuilderAAs);
+								ImGui::SliderFloat(XorStr("Pitch Angle: "), &g_Options.Ragebot.BuilderPitch, -89, 89, "%1.f");
+								ImGui::SliderFloat(XorStr("Real Angle: "), &g_Options.Ragebot.BuilderReal, -180, 180, "%1.f");
+								ImGui::SliderFloat(XorStr("Fake Angle: "), &g_Options.Ragebot.BuilderFake, -180, 180, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Real Jitter"), &g_Options.Ragebot.Jitter);
+								ImGui::SliderFloat(XorStr("Jitter Range: "), &g_Options.Ragebot.JitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Fake Jitter"), &g_Options.Ragebot.FJitter);
+								ImGui::SliderFloat(XorStr("FJitter Range: "), &g_Options.Ragebot.FJitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("LBY Breaker"), &g_Options.Ragebot.LBYBreaker);
+							}
 							break;
 						case 2:
 							ImGui::Checkbox(XorStr("AA On Jump"), &g_Options.Ragebot.AA_onJump);
+							
+
+							
+							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype2 = 0;
+							ImGui::SameLine();
+							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype2 = 1;
+
+							if (aatabtype2 == 0)
+							{
+								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
+								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.PitchAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Yaw"), &g_Options.Ragebot.YawTrue, antiaimyawtrue, ARRAYSIZE(antiaimyawtrue));
+								ImGui::SliderFloat(XorStr("Real Adder: "), &g_Options.Ragebot.YawTrueAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Fake-Yaw"), &g_Options.Ragebot.YawFake, antiaimyawfake, ARRAYSIZE(antiaimyawfake));
+								ImGui::SliderFloat(XorStr("Fake Adder: "), &g_Options.Ragebot.YawFakeAdder, -180, 180, "%1.f");
+							}
+							else if (aatabtype2 == 1)
+							{
+								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.BuilderAAs);
+								ImGui::SliderFloat(XorStr("Pitch Angle: "), &g_Options.Ragebot.BuilderPitch, -89, 89, "%1.f");
+								ImGui::SliderFloat(XorStr("Real Angle: "), &g_Options.Ragebot.BuilderReal, -180, 180, "%1.f");
+								ImGui::SliderFloat(XorStr("Fake Angle: "), &g_Options.Ragebot.BuilderFake, -180, 180, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Real Jitter"), &g_Options.Ragebot.Jitter);
+								ImGui::SliderFloat(XorStr("Jitter Range: "), &g_Options.Ragebot.JitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Fake Jitter"), &g_Options.Ragebot.FJitter);
+								ImGui::SliderFloat(XorStr("FJitter Range: "), &g_Options.Ragebot.FJitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("LBY Breaker"), &g_Options.Ragebot.LBYBreaker);
+							}
 							break;
 						case 3:
 							ImGui::Checkbox(XorStr("AA On FakeWalk"), &g_Options.Ragebot.AA_onFakeWalk);
+							
+
+							
+							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype3 = 0;
+							ImGui::SameLine();
+							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype3 = 1;
+
+							if (aatabtype3 == 0)
+							{
+								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
+								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.PitchAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Yaw"), &g_Options.Ragebot.YawTrue, antiaimyawtrue, ARRAYSIZE(antiaimyawtrue));
+								ImGui::SliderFloat(XorStr("Real Adder: "), &g_Options.Ragebot.YawTrueAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Fake-Yaw"), &g_Options.Ragebot.YawFake, antiaimyawfake, ARRAYSIZE(antiaimyawfake));
+								ImGui::SliderFloat(XorStr("Fake Adder: "), &g_Options.Ragebot.YawFakeAdder, -180, 180, "%1.f");
+							}
+							else if (aatabtype3 == 1)
+							{
+								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.BuilderAAs);
+								ImGui::SliderFloat(XorStr("Pitch Angle: "), &g_Options.Ragebot.BuilderPitch, -89, 89, "%1.f");
+								ImGui::SliderFloat(XorStr("Real Angle: "), &g_Options.Ragebot.BuilderReal, -180, 180, "%1.f");
+								ImGui::SliderFloat(XorStr("Fake Angle: "), &g_Options.Ragebot.BuilderFake, -180, 180, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Real Jitter"), &g_Options.Ragebot.Jitter);
+								ImGui::SliderFloat(XorStr("Jitter Range: "), &g_Options.Ragebot.JitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Fake Jitter"), &g_Options.Ragebot.FJitter);
+								ImGui::SliderFloat(XorStr("FJitter Range: "), &g_Options.Ragebot.FJitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("LBY Breaker"), &g_Options.Ragebot.LBYBreaker);
+							}
 							break;
 						case 4:
 							ImGui::Checkbox(XorStr("AA On Crouch"), &g_Options.Ragebot.AA_onCrouch);
+							
+
+							
+							if (ImGui::Button("Presets", ImVec2(151, 25))) aatabtype4 = 0;
+							ImGui::SameLine();
+							if (ImGui::Button("Self Made", ImVec2(151, 25))) aatabtype4 = 1;
+
+							if (aatabtype4 == 0)
+							{
+								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
+								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.PitchAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Yaw"), &g_Options.Ragebot.YawTrue, antiaimyawtrue, ARRAYSIZE(antiaimyawtrue));
+								ImGui::SliderFloat(XorStr("Real Adder: "), &g_Options.Ragebot.YawTrueAdder, -180, 180, "%1.f");
+								ImGui::Separator();
+								ImGui::Combo(XorStr("Fake-Yaw"), &g_Options.Ragebot.YawFake, antiaimyawfake, ARRAYSIZE(antiaimyawfake));
+								ImGui::SliderFloat(XorStr("Fake Adder: "), &g_Options.Ragebot.YawFakeAdder, -180, 180, "%1.f");
+							}
+							else if (aatabtype4 == 1)
+							{
+								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.BuilderAAs);
+								ImGui::SliderFloat(XorStr("Pitch Angle: "), &g_Options.Ragebot.BuilderPitch, -89, 89, "%1.f");
+								ImGui::SliderFloat(XorStr("Real Angle: "), &g_Options.Ragebot.BuilderReal, -180, 180, "%1.f");
+								ImGui::SliderFloat(XorStr("Fake Angle: "), &g_Options.Ragebot.BuilderFake, -180, 180, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Real Jitter"), &g_Options.Ragebot.Jitter);
+								ImGui::SliderFloat(XorStr("Jitter Range: "), &g_Options.Ragebot.JitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("Enable Fake Jitter"), &g_Options.Ragebot.FJitter);
+								ImGui::SliderFloat(XorStr("FJitter Range: "), &g_Options.Ragebot.FJitterRange, -90, 90, "%1.f");
+								ImGui::Checkbox(XorStr("LBY Breaker"), &g_Options.Ragebot.LBYBreaker);
+							}
 							break;
 						}
 
