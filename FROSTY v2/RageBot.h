@@ -25,11 +25,6 @@ private:
 
 
 	//new antiaim shit for later shit
-	void DoAntiAim_onWalk(CInput::CUserCmd *pCmd, bool& bSendPacket);
-	void DoAntiAim_onJump(CInput::CUserCmd *pCmd, bool& bSendPacket);
-	void DoAntiAim_onRun(CInput::CUserCmd *pCmd, bool& bSendPacket);
-	void DoAntiAim_onFakeWalk(CInput::CUserCmd *pCmd, bool& bSendPacket);
-	void DoAntiAim_onCrouch(CInput::CUserCmd *pCmd, bool& bSendPacket);
 
 
 	void FakeLag(CInput::CUserCmd* cmd);

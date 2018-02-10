@@ -76,7 +76,7 @@ struct Variables
 		float	crouch_BuilderFake;
 		float	crouch_BuilderPitch;
 		float	crouch_JitterRange;
-		float	crouuch_FJitterRange;
+		float	crouch_FJitterRange;
 
 		
 		//fakewalk builder aa's
@@ -125,50 +125,56 @@ struct Variables
 		// Pitch  PitchAdder  YawTrue  YawFakeAdder  YawFake  YawFakeAdder
 
 		//walking prebuilt aa
+		bool	walk_PreAAs;
 		int		walk_Pitch;
 		float	walk_PitchAdder;
 		int		walk_YawTrue;
-		float	walk_YawFakeAdder;
+		float	walk_YawTrueAdder;
 		int		walk_YawFake;
 		float	walk_YawFakeAdder;
 
 
 		//running prebuilt aa
+		bool	run_PreAAs;
 		int		run_Pitch;
 		float	run_PitchAdder;
 		int		run_YawTrue;
-		float	run_YawFakeAdder;
+		float	run_YawTrueAdder;
 		int		run_YawFake;
 		float	run_YawFakeAdder;
 
 		
 		//crouching prebuilt aa
+		bool	crouch_PreAAs;
 		int		crouch_Pitch;
 		float	crouch_PitchAdder;
 		int		crouch_YawTrue;
-		float	crouch_YawFakeAdder;
+		float	crouch_YawTrueAdder;
 		int		crouch_YawFake;
 		float	crouch_YawFakeAdder;
 
 
 		//fakewalk prebuilt aa fwalk
+		bool	fwalk_PreAAs;
 		int		fwalk_Pitch;
 		float	fwalk_PitchAdder;
 		int		fwalk_YawTrue;
-		float	fwalk_YawFakeAdder;
+		float	fwalk_YawTrueAdder;
 		int		fwalk_YawFake;
 		float	fwalk_YawFakeAdder;
 
 		
 		//standing prebuilt aa's 
+		bool	stand_PreAAs;
 		int		stand_Pitch;
 		float	stand_PitchAdder;
 		int		stand_YawTrue;
-		float	stand_YawFakeAdder;
+		float	stand_YawTrueAdder;
 		int		stand_YawFake;
 		float	stand_YawFakeAdder;
 
-
+		//aa warning variable
+		int error_type;
 
 		bool	FriendlyFire;
 		int		Hitbox;
