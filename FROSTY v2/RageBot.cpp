@@ -774,123 +774,135 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 	CBaseCombatWeapon* pWeapon = (CBaseCombatWeapon*)g_EntityList->GetClientEntityFromHandle(pLocal->GetActiveWeaponHandle());
 
 
-	int dab = 1;
-	
-
 
 	if (pCmd->buttons & IN_WALK) // walking
 	{
 		//walk_ builder stuff
-		g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.walk_BuilderAAs;
-		g_Options.Ragebot.Jitter = g_Options.Ragebot.walk_Jitter;
-		g_Options.Ragebot.FJitter = g_Options.Ragebot.walk_FJitter;
-		g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.walk_LBYBreaker;
-		g_Options.Ragebot.BuilderReal = g_Options.Ragebot.walk_BuilderReal;
-		g_Options.Ragebot.BuilderFake = g_Options.Ragebot.walk_BuilderFake;
-		g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.walk_BuilderPitch;
-		g_Options.Ragebot.JitterRange = g_Options.Ragebot.walk_JitterRange;
-		g_Options.Ragebot.FJitterRange = g_Options.Ragebot.walk_FJitterRange;
+		if (g_Options.Ragebot.AA_onWalk)
+		{
+			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.walk_BuilderAAs;
+			g_Options.Ragebot.Jitter = g_Options.Ragebot.walk_Jitter;
+			g_Options.Ragebot.FJitter = g_Options.Ragebot.walk_FJitter;
+			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.walk_LBYBreaker;
+			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.walk_BuilderReal;
+			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.walk_BuilderFake;
+			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.walk_BuilderPitch;
+			g_Options.Ragebot.JitterRange = g_Options.Ragebot.walk_JitterRange;
+			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.walk_FJitterRange;
 
 
-		//prebuild stuff
-		g_Options.Ragebot.PreAAs = g_Options.Ragebot.walk_PreAAs;
-		g_Options.Ragebot.Pitch = g_Options.Ragebot.walk_Pitch;
-		g_Options.Ragebot.PitchAdder = g_Options.Ragebot.walk_PitchAdder;
-		g_Options.Ragebot.YawTrue = g_Options.Ragebot.walk_YawTrue;
-		g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.walk_YawTrueAdder;
-		g_Options.Ragebot.YawFake = g_Options.Ragebot.walk_YawFake;
-		g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.walk_YawFakeAdder;
+			//prebuild stuff
+			g_Options.Ragebot.PreAAs = g_Options.Ragebot.walk_PreAAs;
+			g_Options.Ragebot.Pitch = g_Options.Ragebot.walk_Pitch;
+			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.walk_PitchAdder;
+			g_Options.Ragebot.YawTrue = g_Options.Ragebot.walk_YawTrue;
+			g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.walk_YawTrueAdder;
+			g_Options.Ragebot.YawFake = g_Options.Ragebot.walk_YawFake;
+			g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.walk_YawFakeAdder;
+		}
 
 	}
 	if (pCmd->buttons & IN_RUN) // running
 	{
 		//run_ builder stuff
-		g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.run_BuilderAAs;
-		g_Options.Ragebot.Jitter = g_Options.Ragebot.run_Jitter;
-		g_Options.Ragebot.FJitter = g_Options.Ragebot.run_FJitter;
-		g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.run_LBYBreaker;
-		g_Options.Ragebot.BuilderReal = g_Options.Ragebot.run_BuilderReal;
-		g_Options.Ragebot.BuilderFake = g_Options.Ragebot.run_BuilderFake;
-		g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.run_BuilderPitch;
-		g_Options.Ragebot.JitterRange = g_Options.Ragebot.run_JitterRange;
-		g_Options.Ragebot.FJitterRange = g_Options.Ragebot.run_FJitterRange;
+		if (g_Options.Ragebot.AA_onRun)
+		{
+			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.run_BuilderAAs;
+			g_Options.Ragebot.Jitter = g_Options.Ragebot.run_Jitter;
+			g_Options.Ragebot.FJitter = g_Options.Ragebot.run_FJitter;
+			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.run_LBYBreaker;
+			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.run_BuilderReal;
+			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.run_BuilderFake;
+			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.run_BuilderPitch;
+			g_Options.Ragebot.JitterRange = g_Options.Ragebot.run_JitterRange;
+			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.run_FJitterRange;
 
-		//prebuild stuff
-		g_Options.Ragebot.PreAAs = g_Options.Ragebot.run_PreAAs;
-		g_Options.Ragebot.Pitch = g_Options.Ragebot.run_Pitch;
-		g_Options.Ragebot.PitchAdder = g_Options.Ragebot.run_PitchAdder;
-		g_Options.Ragebot.YawTrue = g_Options.Ragebot.run_YawTrue;
-		g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.run_YawTrueAdder;
-		g_Options.Ragebot.YawFake = g_Options.Ragebot.run_YawFake;
-		g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.run_YawFakeAdder;
+			//prebuild stuff
+			g_Options.Ragebot.PreAAs = g_Options.Ragebot.run_PreAAs;
+			g_Options.Ragebot.Pitch = g_Options.Ragebot.run_Pitch;
+			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.run_PitchAdder;
+			g_Options.Ragebot.YawTrue = g_Options.Ragebot.run_YawTrue;
+			g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.run_YawTrueAdder;
+			g_Options.Ragebot.YawFake = g_Options.Ragebot.run_YawFake;
+			g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.run_YawFakeAdder;
+		}
 
 
 	}
 	if ((pCmd->buttons & IN_DUCK) && pLocal->GetVelocity().Length2D() < 25) // crouching
 	{
 		//crouch_ builder stuff
-		g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.crouch_BuilderAAs;
-		g_Options.Ragebot.Jitter = g_Options.Ragebot.crouch_Jitter;
-		g_Options.Ragebot.FJitter = g_Options.Ragebot.crouch_FJitter;
-		g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.crouch_LBYBreaker;
-		g_Options.Ragebot.BuilderReal = g_Options.Ragebot.crouch_BuilderReal;
-		g_Options.Ragebot.BuilderFake = g_Options.Ragebot.crouch_BuilderFake;
-		g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.crouch_BuilderPitch;
-		g_Options.Ragebot.JitterRange = g_Options.Ragebot.crouch_JitterRange;
-		g_Options.Ragebot.FJitterRange = g_Options.Ragebot.crouch_FJitterRange;
+		if (g_Options.Ragebot.AA_onCrouch)
+		{
+			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.crouch_BuilderAAs;
+			g_Options.Ragebot.Jitter = g_Options.Ragebot.crouch_Jitter;
+			g_Options.Ragebot.FJitter = g_Options.Ragebot.crouch_FJitter;
+			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.crouch_LBYBreaker;
+			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.crouch_BuilderReal;
+			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.crouch_BuilderFake;
+			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.crouch_BuilderPitch;
+			g_Options.Ragebot.JitterRange = g_Options.Ragebot.crouch_JitterRange;
+			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.crouch_FJitterRange;
 
-		//prebuild stuff
-		g_Options.Ragebot.PreAAs = g_Options.Ragebot.crouch_PreAAs;
-		g_Options.Ragebot.Pitch = g_Options.Ragebot.crouch_Pitch;
-		g_Options.Ragebot.PitchAdder = g_Options.Ragebot.crouch_PitchAdder;
-		g_Options.Ragebot.YawTrue = g_Options.Ragebot.crouch_YawTrue;
-		g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.crouch_YawTrueAdder;
-		g_Options.Ragebot.YawFake = g_Options.Ragebot.crouch_YawFake;
-		g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.crouch_YawFakeAdder;
+			//prebuild stuff
+			g_Options.Ragebot.PreAAs = g_Options.Ragebot.crouch_PreAAs;
+			g_Options.Ragebot.Pitch = g_Options.Ragebot.crouch_Pitch;
+			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.crouch_PitchAdder;
+			g_Options.Ragebot.YawTrue = g_Options.Ragebot.crouch_YawTrue;
+			g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.crouch_YawTrueAdder;
+			g_Options.Ragebot.YawFake = g_Options.Ragebot.crouch_YawFake;
+			g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.crouch_YawFakeAdder;
+		}
 	}
 	if (pLocal->GetVelocity().Length2D() < 25) //fakewalking
 	{
 		//fwalk_ builder stuff
-		g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.fwalk_BuilderAAs;
-		g_Options.Ragebot.Jitter = g_Options.Ragebot.fwalk_Jitter;
-		g_Options.Ragebot.FJitter = g_Options.Ragebot.fwalk_FJitter;
-		g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.fwalk_LBYBreaker;
-		g_Options.Ragebot.BuilderReal = g_Options.Ragebot.fwalk_BuilderReal;
-		g_Options.Ragebot.BuilderFake = g_Options.Ragebot.fwalk_BuilderFake;
-		g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.fwalk_BuilderPitch;
-		g_Options.Ragebot.JitterRange = g_Options.Ragebot.fwalk_JitterRange;
-		g_Options.Ragebot.FJitterRange = g_Options.Ragebot.fwalk_FJitterRange;
+		if (g_Options.Ragebot.AA_onFakeWalk)
+		{
+			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.fwalk_BuilderAAs;
+			g_Options.Ragebot.Jitter = g_Options.Ragebot.fwalk_Jitter;
+			g_Options.Ragebot.FJitter = g_Options.Ragebot.fwalk_FJitter;
+			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.fwalk_LBYBreaker;
+			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.fwalk_BuilderReal;
+			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.fwalk_BuilderFake;
+			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.fwalk_BuilderPitch;
+			g_Options.Ragebot.JitterRange = g_Options.Ragebot.fwalk_JitterRange;
+			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.fwalk_FJitterRange;
 
-		//prebuild stuff
-		g_Options.Ragebot.PreAAs = g_Options.Ragebot.fwalk_PreAAs;
-		g_Options.Ragebot.Pitch = g_Options.Ragebot.fwalk_Pitch;
-		g_Options.Ragebot.PitchAdder = g_Options.Ragebot.fwalk_PitchAdder;
-		g_Options.Ragebot.YawTrue = g_Options.Ragebot.fwalk_YawTrue;
-		g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.fwalk_YawTrueAdder;
-		g_Options.Ragebot.YawFake = g_Options.Ragebot.fwalk_YawFake;
-		g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.fwalk_YawFakeAdder;
+			//prebuild stuff
+			g_Options.Ragebot.PreAAs = g_Options.Ragebot.fwalk_PreAAs;
+			g_Options.Ragebot.Pitch = g_Options.Ragebot.fwalk_Pitch;
+			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.fwalk_PitchAdder;
+			g_Options.Ragebot.YawTrue = g_Options.Ragebot.fwalk_YawTrue;
+			g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.fwalk_YawTrueAdder;
+			g_Options.Ragebot.YawFake = g_Options.Ragebot.fwalk_YawFake;
+			g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.fwalk_YawFakeAdder;
+		}
 	}
 	if (pLocal->GetVelocity().Length2D() == 25) //standing still
 	{
 		//stand_ builder stuff 
-		g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.stand_BuilderAAs;
-		g_Options.Ragebot.Jitter = g_Options.Ragebot.stand_Jitter;
-		g_Options.Ragebot.FJitter = g_Options.Ragebot.stand_FJitter;
-		g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.stand_LBYBreaker;
-		g_Options.Ragebot.BuilderReal = g_Options.Ragebot.stand_BuilderReal;
-		g_Options.Ragebot.BuilderFake = g_Options.Ragebot.stand_BuilderFake;
-		g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.stand_BuilderPitch;
-		g_Options.Ragebot.JitterRange = g_Options.Ragebot.stand_JitterRange;
-		g_Options.Ragebot.FJitterRange = g_Options.Ragebot.stand_FJitterRange;
+		if (g_Options.Ragebot.AA_onStand)
+		{
+			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.stand_BuilderAAs;
+			g_Options.Ragebot.Jitter = g_Options.Ragebot.stand_Jitter;
+			g_Options.Ragebot.FJitter = g_Options.Ragebot.stand_FJitter;
+			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.stand_LBYBreaker;
+			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.stand_BuilderReal;
+			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.stand_BuilderFake;
+			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.stand_BuilderPitch;
+			g_Options.Ragebot.JitterRange = g_Options.Ragebot.stand_JitterRange;
+			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.stand_FJitterRange;
 
-		//prebuild stuff
-		g_Options.Ragebot.PreAAs = g_Options.Ragebot.stand_PreAAs;
-		g_Options.Ragebot.Pitch = g_Options.Ragebot.stand_Pitch;
-		g_Options.Ragebot.PitchAdder = g_Options.Ragebot.stand_PitchAdder;
-		g_Options.Ragebot.YawTrue = g_Options.Ragebot.stand_YawTrue;
-		g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.stand_YawTrueAdder;
-		g_Options.Ragebot.YawFake = g_Options.Ragebot.stand_YawFake;
-		g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.stand_YawFakeAdder;
+			//prebuild stuff
+			g_Options.Ragebot.PreAAs = g_Options.Ragebot.stand_PreAAs;
+			g_Options.Ragebot.Pitch = g_Options.Ragebot.stand_Pitch;
+			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.stand_PitchAdder;
+			g_Options.Ragebot.YawTrue = g_Options.Ragebot.stand_YawTrue;
+			g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.stand_YawTrueAdder;
+			g_Options.Ragebot.YawFake = g_Options.Ragebot.stand_YawFake;
+			g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.stand_YawFakeAdder;
+		}
 	}
 
 

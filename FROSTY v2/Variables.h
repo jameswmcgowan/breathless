@@ -216,7 +216,7 @@ struct Variables
 		bool	AA_onWalk;
 		bool	AA_onCrouch;
 		bool	AA_onFakeWalk;
-		bool	AA_onJump;
+		bool	AA_onStand;
 	} Ragebot;
 
 	struct

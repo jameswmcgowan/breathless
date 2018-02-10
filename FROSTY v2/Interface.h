@@ -280,12 +280,6 @@ void RenderInterface() {
 		}
 
 
-		g_Options.Ragebot.stand_PreAAs = false;
-		g_Options.Ragebot.stand_BuilderAAs = false;
-		Globals::error = false;
-
-
-
 		if (ImGui::Begin("##chet", &is_renderer_active, ImVec2(750, 608), 1.f, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse))
 		{
 			static float r = 1.0f;
@@ -371,17 +365,23 @@ void RenderInterface() {
 					ImGui::BeginChild("##more ragebot stuff", ImVec2(310.f, 288.f));
 					{
 						//more ragebot settings
-						//putting unload here temp
-						if (ImGui::Button(XorStr("Unhook")))
-						{
-							g_Engine->ClientCmd_Unrestricted("cl_mouseenable 1");
-							unload = true;
-						}
-						ImGui::PushItemWidth(150);
 						ImGui::Checkbox(XorStr("Active"), &g_Options.Ragebot.MainSwitch);
-						ImGui::Combo(XorStr("Hitbox"), &g_Options.Ragebot.Hitbox, aimBones, ARRAYSIZE(aimBones));
-						ImGui::PushItemWidth(260);
-						ImGui::SliderFloat(XorStr("Snipers"), &g_Options.Ragebot.HitchanceSniper, 0.f, 100.f, "%.1f");
+						ImGui::Spacing();
+						ImGui::Separator();
+						ImGui::Checkbox(XorStr("Enabled"), &g_Options.Ragebot.Enabled);
+						ImGui::SliderFloat(XorStr("FOV"), &g_Options.Ragebot.FOV, 1.f, 180.f, "%.0f");
+						ImGui::Checkbox(XorStr("Silent Aim"), &g_Options.Ragebot.Silent);
+						ImGui::Checkbox(XorStr("AutoPistol"), &g_Options.Ragebot.AutoPistol);
+						ImGui::Checkbox(XorStr("NoRecoil"), &g_Options.Ragebot.AntiRecoil);
+						ImGui::Checkbox(XorStr("Auto Stop"), &g_Options.Ragebot.AutoStop);
+						ImGui::Checkbox(XorStr("Auto Crouch"), &g_Options.Ragebot.AutoCrouch);
+						ImGui::Checkbox(XorStr("Auto Scope"), &g_Options.Ragebot.AutoScope);
+
+
+						ImGui::Checkbox(XorStr("Anti-Aim Enabled"), &g_Options.Ragebot.EnabledAntiAim);
+
+
+						ImGui::Checkbox(XorStr("Auto Fire"), &g_Options.Ragebot.AutoFire);
 					}
 					ImGui::EndChild();
 
@@ -390,15 +390,57 @@ void RenderInterface() {
 					ImGui::BeginChild("##aimbot stuff", ImVec2(310.f, 288.f));
 					{
 						// ragebot misc settings
+						ImGui::Text("Min Damage");
+						ImGui::PushItemWidth(280.f);
+						ImGui::SliderFloat(("Snipers##gay"), &g_Options.Ragebot.MinimumDamageSniper, 1.f, 100.f, "%.2f");
+						ImGui::SliderFloat(("Rifles##gay"), &g_Options.Ragebot.MinimumDamageRifle, 1.f, 100.f, "%.2f");
+						ImGui::SliderFloat(("Pistols##gay"), &g_Options.Ragebot.MinimumDamagePistol, 1.f, 100.f, "%.2f");
+						ImGui::SliderFloat(("Heavies##gay"), &g_Options.Ragebot.MinimumDamageHeavy, 1.f, 100.f, "%.2f");
+						ImGui::SliderFloat(("SMGs##gay"), &g_Options.Ragebot.MinimumDamageSmg, 1.f, 100.f, "%.2f");
+						ImGui::SliderFloat(("Revolver/Deag##gay"), &g_Options.Ragebot.MinimumDamageRevolver, 1.f, 100.f, "%.2f");
 
+						ImGui::Checkbox(XorStr("Hitchance"), &g_Options.Ragebot.Hitchance);
+						ImGui::SliderFloat(XorStr("Snipers"), &g_Options.Ragebot.HitchanceSniper, 0.f, 100.f, "%.1f");
+						ImGui::SliderFloat(XorStr("Rifles"), &g_Options.Ragebot.HitchanceRifle, 0.f, 100.f, "%.1f");
+						ImGui::SliderFloat(XorStr("Pistols"), &g_Options.Ragebot.HitchancePistol, 0.f, 100.f, "%.1f");
+						ImGui::SliderFloat(XorStr("SMGs"), &g_Options.Ragebot.HitchanceSmgs, 0.f, 100.f, "%.1f");
+						ImGui::SliderFloat(XorStr("Heavies"), &g_Options.Ragebot.HitchanceHeavy, 0.f, 100.f, "%.1f");
+						ImGui::SliderFloat(XorStr("Revolver / Deagle"), &g_Options.Ragebot.HitchanceRevolver, 0.f, 100.f, "%.1f");
 					}
 					ImGui::EndChild();
 
 
 					ImGui::BeginChild("##ragebot shit.", ImVec2(310.f, 288.f));
 					{
-						ImGui::Checkbox(XorStr("Anti-Aim Enabled"), &g_Options.Ragebot.EnabledAntiAim);
-						ImGui::Checkbox(XorStr("Thirdperson"), &g_Options.Visuals.ThirdPerson);
+						ImGui::PushItemWidth(184);
+						ImGui::Checkbox(XorStr("Resolver"), &g_Options.Ragebot.Resolver);
+						ImGui::Text(XorStr("Bruteforce after X bullets:"));
+						ImGui::SliderFloat(XorStr("Shots: "), &g_Options.Ragebot.bruteAfterX, 0, 10, "%1.f");
+
+						ImGui::Separator();
+
+						ImGui::Checkbox(XorStr("Fakelag Fix"), &g_Options.Ragebot.FakeLagFix);
+						ImGui::Checkbox(XorStr("Position Adjustment"), &g_Options.Ragebot.PosAdjust);
+
+						ImGui::Separator();
+
+						ImGui::Checkbox(XorStr("Edge"), &g_Options.Ragebot.Edge);
+						ImGui::Checkbox(XorStr("AntiAim on knife"), &g_Options.Ragebot.KnifeAA);
+
+						ImGui::Separator();
+
+						ImGui::Checkbox(XorStr("Enable FakeLag"), &g_Options.Ragebot.FakeLag);
+						ImGui::SliderInt(XorStr("Amount"), &g_Options.Ragebot.FakeLagAmt, 0, 15, "%1.f");
+
+						ImGui::Separator();
+
+						ImGui::Text(XorStr("Rage On Key"));
+						ImGui::SameLine();
+						ImGui::Hotkey(XorStr("##gay 1"), &g_Options.Ragebot.KeyPress);
+						ImGui::Text(XorStr("BAIM Key ;)  "));
+						ImGui::SameLine();
+						ImGui::Hotkey(XorStr("##biggest gay"), &g_Options.Ragebot.BAIMkey);
+						
 					}
 					ImGui::EndChild();
 
@@ -503,7 +545,7 @@ void RenderInterface() {
 							}
 							break;
 						case 2:
-							ImGui::Checkbox(XorStr("AA On Stand"), &g_Options.Ragebot.AA_onJump);
+							ImGui::Checkbox(XorStr("AA On Stand"), &g_Options.Ragebot.AA_onStand);
 							
 
 							
@@ -668,8 +710,14 @@ void RenderInterface() {
 					ImGui::BeginChild("##misc options", ImVec2(310.f, 580.f));
 					{
 						ImGui::Text("Misc:");
-						//lots of visuals on page 1
 
+						if (ImGui::Button(XorStr("Unhook")))
+						{
+							g_Engine->ClientCmd_Unrestricted("cl_mouseenable 1");
+							unload = true;
+						}
+						ImGui::Checkbox("Anti-Untrusted", &g_Options.Misc.antiuntrusted);
+						
 					}
 					ImGui::EndChild();
 

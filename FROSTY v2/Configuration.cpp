@@ -69,9 +69,9 @@ void CConfig::Setup()
 	//new aa stuff going here
 	SetupValue(g_Options.Ragebot.AA_onCrouch, false, ("RageBot"), ("AACrouch"));
 	SetupValue(g_Options.Ragebot.AA_onFakeWalk, false, ("RageBot"), ("AAFakeWalk"));
-	SetupValue(g_Options.Ragebot.AA_onRun, false, ("RageBot"), ("AAStand"));
+	SetupValue(g_Options.Ragebot.AA_onRun, false, ("RageBot"), ("AARun"));
 	SetupValue(g_Options.Ragebot.AA_onWalk, false, ("RageBot"), ("AAWalk"));
-	SetupValue(g_Options.Ragebot.AA_onJump, false, ("RageBot"), ("AARun"));
+	SetupValue(g_Options.Ragebot.AA_onStand, false, ("RageBot"), ("AAStand"));
 
 
 	//walkiing builder aa's
