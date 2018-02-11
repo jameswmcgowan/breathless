@@ -656,34 +656,43 @@ void RenderInterface() {
 				}
 				else if (tabselected == 1)
 				{
-					ImGui::BeginChild("##sniper", ImVec2(310.f, 288.f));
-					{
-						ImGui::Text("Snipers:");
-					}
-					ImGui::EndChild();
-
+					static int legitguntab = 0;
+					ImGui::PushFont(guns);
+					if (ImGui::Button("a", ImVec2(120, 80))) legitguntab = 0;
 					ImGui::SameLine();
-
-					ImGui::BeginChild("##rifles", ImVec2(310.f, 288.f));
-					{
-						ImGui::Text("Rifles:");
-					}
-					ImGui::EndChild();
-
-
-					ImGui::BeginChild("##pistols", ImVec2(310.f, 288.f));
-					{
-						ImGui::Text("Pistols:");
-					}
-					ImGui::EndChild();
-
+					if (ImGui::Button("S", ImVec2(120, 80))) legitguntab = 1;
 					ImGui::SameLine();
+					if (ImGui::Button("P", ImVec2(120, 80))) legitguntab = 2;
+					ImGui::SameLine();
+					if (ImGui::Button("G", ImVec2(120, 80))) legitguntab = 3;
+					ImGui::SameLine();
+					if (ImGui::Button("A", ImVec2(120, 80))) legitguntab = 4;
 
-					ImGui::BeginChild("##shotguns", ImVec2(310.f, 288.f));
+					ImGui::PushFont(fDefault);
+					ImGui::BeginChild("##big shit here", ImVec2(625.f, 470.f));
 					{
-						ImGui::Text("Shotguns:");
+						switch (legitguntab)
+						{
+						case 0:
+							ImGui::Text("snipers");
+							break;
+						case 1:
+							ImGui::Text("rifles");
+							break;
+						case 2:
+							ImGui::Text("smg");
+							break;
+						case 3:
+							ImGui::Text("pistols regular");
+							break;
+						case 4:
+							ImGui::Text("deagle/revolver");
+							break;
+							
+						}
 					}
 					ImGui::EndChild();
+
 				}
 				else if (tabselected == 2)
 				{

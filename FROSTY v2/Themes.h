@@ -6,6 +6,7 @@
 ImFont* fDefault;
 ImFont* fskeet;
 ImFont* fbadcache;
+ImFont* guns;
 
 
 void RenderDefault(IDirect3DDevice9* pDevice)
@@ -20,6 +21,7 @@ void RenderDefault(IDirect3DDevice9* pDevice)
 	fDefault = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Tahoma.ttf", 16.0f);
 	fskeet = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\skrrtmenufont.ttf", 55.0f);
 	fbadcache = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\badcache.ttf", 55.0f);
+	guns = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\astriumwep.ttf", 36.0f);
 
 
 	static int hue = 140;
