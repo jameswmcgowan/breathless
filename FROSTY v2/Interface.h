@@ -665,7 +665,7 @@ void RenderInterface() {
 					if (ImGui::Button("P", ImVec2(120, 80))) legitguntab = 2;
 					ImGui::SameLine();
 					if (ImGui::Button("G", ImVec2(120, 80))) legitguntab = 3;
-					ImGui::SameLine();
+					ImGui::SameLine();.
 					if (ImGui::Button("A", ImVec2(120, 80))) legitguntab = 4;
 
 					ImGui::PushFont(fDefault);
