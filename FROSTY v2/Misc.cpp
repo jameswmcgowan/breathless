@@ -29,32 +29,259 @@ void misc::OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local)
 
 		if (counter % 48 == 0)
 			motion++;
-		int value = ServerTime % 20;
-		switch (value) {
-		case 0: setclantag(XorStr("")); break;
-		case 1: setclantag(XorStr("f")); break;
-		case 2: setclantag(XorStr("fr")); break;
-		case 3: setclantag(XorStr("fro")); break;
-		case 4: setclantag(XorStr("fros")); break;
-		case 5: setclantag(XorStr("frost")); break;
-		case 6: setclantag(XorStr("frosty")); break;
-		case 7: setclantag(XorStr("frosty.pw")); break;
-		case 8: setclantag(XorStr("frosty.pw")); break;
-		case 9: setclantag(XorStr("frosty.pw")); break;
-		case 10: setclantag(XorStr("frosty.pw")); break;
-		case 11: setclantag(XorStr("frosty.pw")); break;
-		case 12: setclantag(XorStr("frosty.pw")); break;
-		case 13: setclantag(XorStr("frosty")); break;
-		case 14: setclantag(XorStr("frost")); break;
-		case 15: setclantag(XorStr("fros")); break;
-		case 16: setclantag(XorStr("fro")); break;
-		case 17: setclantag(XorStr("fr")); break;
-		case 18: setclantag(XorStr("f")); break;
-		case 19: setclantag(XorStr("")); break;
+		int value = ServerTime % 46;
+switch (value)
+            {
+            case 0:
+            {
+                setclantag("                  ");
+                break;
+            }
+            case 1:
+            {
+                setclantag("                 g");
+                break;
+            }
+            case 2:
+            {
+                setclantag("                ga");
+                break;
+            }
+            case 3:
+            {
+                setclantag("               gam");
+                break;
+            }
+            case 4:
+            {
+                setclantag("              game");
+                break;
+            }
+            case 5:
+            {
+                setclantag("             games");
+                break;
+            }
+            case 6:
+            {
+                setclantag("            gamese");
+                break;
+            }
+            case 7:
+            {
+                setclantag("           gamesen");
+                break;
+            }
+            case 8:
+            {
+                setclantag("          gamesens");
+                break;
+            }
+            case 9:
+            {
+                setclantag("         gamesense");
+                break;
+            }
+            case 10:
+            {
+                setclantag("        gamesense ");
+                break;
+            }
+            case 11:
+            {
+                setclantag("        gamesense ");
+                break;
+            }
+            case 12:
+            {
+                setclantag("        gamesense ");
+                break;
+            }
+            case 13:
+            {
+                setclantag("       gamesense  ");
+                break;
+            }
+            case 14:
+            {
+                setclantag("       gamesense  ");
+                break;
+            }
+            case 15:
+            {
+                setclantag("       gamesense  ");
+                break;
+            }
+            case 16:
+            {
+                setclantag("      gamesense   ");
+                break;
+            }
+            case 17:
+            {
+                setclantag("      gamesense   ");
+                break;
+            }
+            case 18:
+            {
+                setclantag("      gamesense   ");
+                break;
+            }
+            case 19:
+            {
+                setclantag("     gamesense    ");
+                break;
+            }
+            case 20:
+            {
+                setclantag("     gamesense    ");
+                break;
+            }
+            case 21:
+            {
+                setclantag("     gamesense    ");
+                break;
+            }
+            case 22:
+            {
+                setclantag("    gamesense     ");
+                break;
+            }
+            case 23:
+            {
+                setclantag("    gamesense     ");
+                break;
+            }
+            case 24:
+            {
+                setclantag("    gamesense     ");
+                break;
+            }
+            case 25:
+            {
+                setclantag("   gamesense      ");
+                break;
+            }
+            case 26:
+            {
+                setclantag("   gamesense      ");
+                break;
+            }
+            case 27:
+            {
+                setclantag("   gamesense      ");
+                break;
+            }
+            case 28:
+            {
+                setclantag("  gamesense       ");
+                break;
+            }
+            case 29:
+            {
+                setclantag("  gamesense       ");
+                break;
+            }
+            case 30:
+            {
+                setclantag("  gamesense       ");
+                break;
+            }
+            case 31:
+            {
+                setclantag(" gamesense        ");
+                break;
+            }
+            case 32:
+            {
+                setclantag(" gamesense        ");
+                break;
+            }
+            case 33:
+            {
+                setclantag(" gamesense        ");
+                break;
+            }
+            case 34:
+            {
+                setclantag("gamesense         ");
+                break;
+            }
+            case 35:
+            {
+                setclantag("gamesense         ");
+                break;
+            }
+            case 36:
+            {
+                setclantag("gamesense         ");
+                break;
+            }
+            case 37:
+            {
+                setclantag("amesense          ");
+                break;
+            }
+            case 38:
+            {
+                setclantag("mesense           ");
+                break;
+            }
+            case 39:
+            {
+                setclantag("esense            ");
+                break;
+            }
+            case 40:
+            {
+                setclantag("sense             ");
+                break;
+            }
+            case 41:
+            {
+                setclantag("ense              ");
+                break;
+            }
+            case 42:
+            {
+                setclantag("nse               ");
+                break;
+            }
+            case 43:
+            {
+                setclantag("se                ");
+                break;
+            }
+            case 44:
+            {
+                setclantag("e                 ");
+                break;
+            }
+            case 45:
+            {
+                setclantag("                  ");
+                break;
+            }
+            }
+            counter++;
+	}
+	
+	if (g_Options.Misc.breathless_clantag)
+		{
+		static int counter = 0;
+		static int motion = 0;
+		int ServerTime = (float)local->GetTickBase() * g_Globals->interval_per_tick * 2.5;
 
+		if (counter % 48 == 0)
+			motion++;
+		int value = ServerTime % 20;
+
+		switch (value)
+		{
+			setclantag("negro"); break; //someone fucking do this im to lazy
 		}
 		counter++;
-	}
+		}
 
 	if (!g_Options.Misc.animatedclantag && animatedclantag.c_str() != G::AnimatedClantag)
 	{

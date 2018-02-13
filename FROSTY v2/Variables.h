@@ -389,6 +389,7 @@ struct Variables
 		bool ClantagChanger;
 		int ClanTagSpeed;
 		bool syncclantag;
+		bool breathless_clantag;
 		bool SpecList;
 		bool FPSBooster;
 		int SkyBoxChanger;

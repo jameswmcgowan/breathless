@@ -665,7 +665,7 @@ void RenderInterface() {
 					if (ImGui::Button("P", ImVec2(120, 80))) legitguntab = 2;
 					ImGui::SameLine();
 					if (ImGui::Button("G", ImVec2(120, 80))) legitguntab = 3;
-					ImGui::SameLine();.
+					ImGui::SameLine();
 					if (ImGui::Button("A", ImVec2(120, 80))) legitguntab = 4;
 
 					ImGui::PushFont(fDefault);
@@ -726,6 +726,8 @@ void RenderInterface() {
 							unload = true;
 						}
 						ImGui::Checkbox("Anti-Untrusted", &g_Options.Misc.antiuntrusted);
+						ImGui::Checkbox("gamesense Clantag", &g_Options.Misc.syncclantag);
+						ImGui::Checkbox("breathless Clantag", &g_Options.Misc.breathless_clantag);
 						
 					}
 					ImGui::EndChild();
