@@ -274,7 +274,7 @@ switch (value)
 
 		if (counter % 48 == 0)
 			motion++;
-		int value = ServerTime % 20;
+		int value = ServerTime % 36;
 
 		switch (value)
 		{
