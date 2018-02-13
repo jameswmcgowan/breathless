@@ -278,7 +278,43 @@ switch (value)
 
 		switch (value)
 		{
-			setclantag("negro"); break; //someone fucking do this im to lazy
+		case 0: setclantag("                  "); break; 
+		case 1: setclantag("                 b"); break;
+		case 2: setclantag("                br"); break;
+		case 3: setclantag("               bre"); break;
+		case 4: setclantag("              brea"); break;
+		case 5: setclantag("             breat"); break;
+		case 6: setclantag("            breath"); break;
+		case 7: setclantag("           breathl"); break;
+		case 8: setclantag("          breathle"); break;
+		case 9: setclantag("         breathles"); break;
+		case 10: setclantag("        breathless"); break;
+		case 11: setclantag("       breathless "); break;
+		case 12: setclantag("       breathless "); break;
+		case 13: setclantag("      breathless  "); break;
+		case 14: setclantag("      breathless  "); break;
+		case 15: setclantag("     breathless   "); break;
+		case 16: setclantag("     breathless   "); break;
+		case 17: setclantag("    breathless    "); break;
+		case 18: setclantag("    breathless    "); break;
+		case 19: setclantag("   breathless     "); break;
+		case 20: setclantag("   breathless     "); break;
+		case 21: setclantag("  breathless      "); break;
+		case 22: setclantag("  breathless      "); break;
+		case 23: setclantag(" breathless       "); break;
+		case 24: setclantag(" breathless       "); break;
+		case 25: setclantag("breathless        "); break;
+		case 26: setclantag("breathless        "); break;
+		case 27: setclantag("reathless         "); break;
+		case 28: setclantag("eathless          "); break;
+		case 29: setclantag("athless           "); break;
+		case 30: setclantag("thless            "); break;
+		case 31: setclantag("hless             "); break;
+		case 32: setclantag("less              "); break;
+		case 33: setclantag("ess               "); break;
+		case 34: setclantag("ss                "); break;
+		case 35: setclantag("s                 "); break;
+		case 36: setclantag("                  "); break;
 		}
 		counter++;
 		}
