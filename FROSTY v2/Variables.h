@@ -103,7 +103,9 @@ struct Variables
 		float	stand_FJitterRange;
 
 
-		
+		int flip_aa;
+
+		bool ayywarecrasher = false;
 
 		bool	EnabledAntiAim;
 		int		SubAATabs;
@@ -390,6 +392,9 @@ struct Variables
 		int ClanTagSpeed;
 		bool syncclantag;
 		bool breathless_clantag;
+
+		int clantag_SLN;
+
 		bool SpecList;
 		bool FPSBooster;
 		int SkyBoxChanger;
@@ -407,6 +412,9 @@ struct Variables
 		int Slowmo;
 
 		bool niggatest;
+
+		bool show_the_fucking_shit = false;
+		float dab_on_the_haters = 0.f;
 
 
 	} Misc;

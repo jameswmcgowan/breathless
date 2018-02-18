@@ -76,7 +76,7 @@ void RenderDefault(IDirect3DDevice9* pDevice)
 	style.Colors[ImGuiCol_PopupBg] = ImVec4(col_main.x, col_main.y, col_main.z, 0.92f);
 	style.Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(0.20f, 0.20f, 0.20f, 0.35f);
 
-	style.Alpha = 1.0f;
+	//style.Alpha = 1.0f;
 	style.WindowPadding = ImVec2(8, 8);
 	style.WindowMinSize = ImVec2(32, 32);
 	style.WindowRounding = 0.5f;
@@ -84,6 +84,7 @@ void RenderDefault(IDirect3DDevice9* pDevice)
 	style.ChildWindowRounding = 0.0f;
 	style.FramePadding = ImVec2(4, 2);
 	style.FrameRounding = 0.0f;
+	
 	style.ItemSpacing = ImVec2(8, 4);
 	style.ItemInnerSpacing = ImVec2(4, 4);
 	style.TouchExtraPadding = ImVec2(0, 0);

@@ -208,23 +208,26 @@ const char* AngleStyles[] =
 	"Crosshair"
 };
 
+const char* ClanTags[] =
+{
+	"none",
+	"breathless",
+	"gamesense",
+};
+
+static float goddamnalpha = 0.f;
 
 void RenderInterface() {
 
-
-	auto& style = ImGui::GetStyle();
+	
 	bool is_renderer_active = renderer->IsActive();
+
 	if (is_renderer_active)
 	{
 		g_Options.Menu.bShowTabs = true;
-		if (style.Alpha < 1.f)
-			style.Alpha += 0.01f;
 	}
-	if (!is_renderer_active)
+	else
 	{
-
-		if (style.Alpha > 0.f)
-			style.Alpha -= 0.01f;
 		g_Options.Menu.bShowTabs = false;
 	}
 
@@ -278,6 +281,59 @@ void RenderInterface() {
 				}
 			}ImGui::End();
 		}
+		auto& style = ImGui::GetStyle();
+
+		static int hue = 140;
+		ImVec4 col_text = ImColor::HSV(hue / 255.f, 20.f / 255.f, 235.f / 255.f);
+		ImVec4 col_theme = ImColor(17, 17, 17);
+		ImVec4 col_main = ImColor(9, 82, 128);
+		ImVec4 col_back = ImColor(35, 35, 35);
+		ImVec4 col_area = ImColor(4, 32, 41);
+
+		style.Colors[ImGuiCol_Text] = ImVec4(0.98f, 0.98f, 0.98f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_TextDisabled] = ImVec4(0.30f, 0.30f, 0.30f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_WindowBg] = ImVec4(0.1f, 0.1f, 0.1f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ChildWindowBg] = ImVec4(0.07f, 0.07f, 0.07f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_Border] = ImVec4(0.27f, 0.27f, .27f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_FrameBg] = ImVec4(0.14f, 0.14f, 0.14f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.13, 0.13, 0.13, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_FrameBgActive] = ImVec4(0.11, 0.11, 0.11, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_TitleBg] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_TitleBgActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_MenuBarBg] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.1f, 0.1f, 0.1f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ScrollbarGrab] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ComboBg] = ImVec4(0.15, 0.15, 0.15, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_CheckMark] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_SliderGrab] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_Button] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ButtonHovered] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ButtonActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_Header] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_HeaderActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_Column] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ColumnHovered] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ColumnActive] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ResizeGrip] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_CloseButton] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_CloseButtonHovered] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_CloseButtonActive] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_PlotLines] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_PlotLinesHovered] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_PlotHistogram] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_PopupBg] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
+		style.Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(0.20f, 0.20f, 0.20f, g_Options.Misc.dab_on_the_haters);
+
 
 
 		if (ImGui::Begin("##chet", &is_renderer_active, ImVec2(750, 608), 1.f, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse))
@@ -328,10 +384,10 @@ void RenderInterface() {
 			static int tabselected = 0;
 			ImGui::BeginChild("##tabshit", ImVec2(100.f, 580.f));
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.07, 0.07, 0.07, 1.0));
-				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.07, 0.07, 0.07, 1.0));
-				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.07, 0.07, 0.07, 1.0));
-				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.07, 0.07, 0.07, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.07, 0.07, 0.07, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.07, 0.07, 0.07, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, goddamnalpha));
 				ImGui::PushFont(fskeet);
 				if (ImGui::Button("a", ImVec2(100, 93)))
 					tabselected = 0;
@@ -355,10 +411,10 @@ void RenderInterface() {
 			
 			ImGui::BeginChild("##b1g main area", ImVec2(625.f, 580.f));
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.14f, 0.14f, 0.14f, 1.f));
-				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.17f, 0.17f, 0.17f, 1.f));
-				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.17f, 0.17f, 0.17f, 1.f));
-				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.14f, 0.14f, 0.14f, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.17f, 0.17f, 0.17f, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.17f, 0.17f, 0.17f, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, goddamnalpha));
 				ImGui::PushFont(fDefault);
 				if (tabselected == 0)
 				{
@@ -594,7 +650,7 @@ void RenderInterface() {
 								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.fwalk_Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
 								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.fwalk_PitchAdder, -180, 180, "%1.f");
 								ImGui::Separator();
-								ImGui::Combo(XorStr("Yaw"), &g_Options.Ragebot.fwalk_YawTrue, antiaimyawtrue, ARRAYSIZE(antiaimyawtrue));
+								ImGui::Combo(XorStr("Yaw"), &g_Options.Ragebot.fwalk_YawTrue, antiaimyawtrue, ARRAYSIZE(antiaimyawtrue));						
 								ImGui::SliderFloat(XorStr("Real Adder: "), &g_Options.Ragebot.fwalk_YawTrueAdder, -180, 180, "%1.f");
 								ImGui::Separator();
 								ImGui::Combo(XorStr("Fake-Yaw"), &g_Options.Ragebot.fwalk_YawFake, antiaimyawfake, ARRAYSIZE(antiaimyawfake));
@@ -656,17 +712,19 @@ void RenderInterface() {
 				}
 				else if (tabselected == 1)
 				{
+
+
+
+
+
 					static int legitguntab = 0;
 					ImGui::PushFont(guns);
 					if (ImGui::Button("a", ImVec2(120, 80))) legitguntab = 0;
 					ImGui::SameLine();
 					if (ImGui::Button("S", ImVec2(120, 80))) legitguntab = 1;
 					ImGui::SameLine();
-					if (ImGui::Button("P", ImVec2(120, 80))) legitguntab = 2;
-					ImGui::SameLine();
-					if (ImGui::Button("G", ImVec2(120, 80))) legitguntab = 3;
-					ImGui::SameLine();
-					if (ImGui::Button("A", ImVec2(120, 80))) legitguntab = 4;
+					if (ImGui::Button("G", ImVec2(120, 80))) legitguntab = 2;
+
 
 					ImGui::PushFont(fDefault);
 					ImGui::BeginChild("##big shit here", ImVec2(625.f, 470.f));
@@ -680,15 +738,8 @@ void RenderInterface() {
 							ImGui::Text("rifles");
 							break;
 						case 2:
-							ImGui::Text("smg");
-							break;
-						case 3:
-							ImGui::Text("pistols regular");
-							break;
-						case 4:
-							ImGui::Text("deagle/revolver");
-							break;
-							
+							ImGui::Text("pistols");
+							break;							
 						}
 					}
 					ImGui::EndChild();
@@ -699,7 +750,44 @@ void RenderInterface() {
 					ImGui::BeginChild("##visuals 1", ImVec2(310.f, 580.f));
 					{
 						ImGui::Text("Visuals");
-						//lots of visuals on page 1
+						ImGui::Checkbox(XorStr("Team ESP"), &g_Options.Visuals.TeamESP);
+						ImGui::SameLine();
+						ImGui::MyColorEdit3("##ESP", g_Options.Colors.TeamESP, 1 << 7);
+						ImGui::Checkbox(XorStr("Box"), &g_Options.Visuals.Box);
+						ImGui::SameLine();
+						ImGui::MyColorEdit3("##EdddSP", g_Options.Colors.EnemyESP, 1 << 7);
+						ImGui::Combo("##boxkek", &g_Options.Visuals.BoxType, "Full\0\rCorners\0\r3D\0\0", -1);
+						ImGui::Checkbox(XorStr("Skeleton"), &g_Options.Visuals.Skeleton);
+						
+						ImGui::Checkbox(XorStr("Grenade Prediction"), &g_Options.Visuals.GrenadePrediction);
+
+						ImGui::Spacing();
+						ImGui::Separator();
+						ImGui::Text("Player Statistics.");
+
+						ImGui::Checkbox(XorStr("Name"), &g_Options.Visuals.Name);
+						ImGui::Checkbox(XorStr("Weapon"), &g_Options.Visuals.Weapon);
+						ImGui::Combo("##wpnkek", &g_Options.Visuals.wpnmode, "Name\0\rIcon\0\0", -1);
+						ImGui::Checkbox(XorStr("Armor"), &g_Options.Visuals.Armor);
+						ImGui::Checkbox(XorStr("Health"), &g_Options.Visuals.health);
+						ImGui::Checkbox(XorStr("Money"), &g_Options.Visuals.Money);
+						ImGui::Checkbox(XorStr("Callout"), &g_Options.Visuals.Callout);
+
+
+						ImGui::Checkbox(XorStr("Enemy State"), &g_Options.Visuals.Flashed);
+						ImGui::Checkbox(XorStr("Distance"), &g_Options.Visuals.Distance);
+
+						ImGui::Spacing();
+						ImGui::Spacing();
+						ImGui::Separator();
+						ImGui::Spacing();
+
+						ImGui::Checkbox(XorStr("Aimlines"), &g_Options.Visuals.AimLine);
+						ImGui::Checkbox(XorStr("Angle Lines"), &g_Options.Visuals.angleLines);
+						ImGui::Checkbox(XorStr("Awall Indicator"), &g_Options.Visuals.DrawAwall);
+						ImGui::Checkbox(XorStr("LBY Indicator"), &g_Options.Visuals.LBYIndicator);
+
+
 
 					}
 					ImGui::EndChild();
@@ -709,7 +797,28 @@ void RenderInterface() {
 					ImGui::BeginChild("##visuals 2", ImVec2(310.f, 580.f));
 					{
 						ImGui::Text("Visuals Continued");
-						//more visual shit
+
+						ImGui::Checkbox(XorStr("Nightmode"), &g_Options.Misc.nightMode);
+						ImGui::Checkbox(XorStr("Thirdperson"), &g_Options.Visuals.ThirdPerson);
+						ImGui::Hotkey(XorStr("Key##273"), &g_Options.Visuals.TPKey);
+						//ImGui::SliderFloat(XorStr("##tpdist"), &g_Options.Visuals.tpdist, 50.f, 500.f, "%.0f");
+						ImGui::Checkbox(XorStr("Hitmarker"), &g_Options.Visuals.Hitmarker);
+						ImGui::Text(XorStr("HitSound:"));
+						ImGui::SameLine();
+						ImGui::Combo(XorStr("##anullar destruction"), &g_Options.Visuals.Hitsound, HitmarkSound, ARRAYSIZE(HitmarkSound));
+						ImGui::Checkbox(XorStr("Event Log (Beta)"), &g_Options.Visuals.EventLog);
+
+						ImGui::PushItemWidth(184);
+						ImGui::SliderFloat(XorStr("FOV"), &g_Options.Visuals.FOVChanger, 0, 60, "%.0f");
+						ImGui::SliderFloat(XorStr("VFOV"), &g_Options.Visuals.viewmodelChanger, 0, 130, "%.0f");
+						//ImGui::Checkbox(XorStr("Angle Lines"), &g_Options.Visuals.angleLines);
+						ImGui::Checkbox(XorStr("Bomb ESP"), &g_Options.Visuals.Bomb);
+						ImGui::Checkbox(XorStr("Grenades"), &g_Options.Visuals.Grenades);
+						ImGui::Checkbox(XorStr("Resolve Mode"), &g_Options.Visuals.resolveMode);
+						ImGui::Checkbox(XorStr("Dropped Weapons"), &g_Options.Visuals.Droppedguns);
+						ImGui::Checkbox(XorStr("No Smoke"), &g_Options.Visuals.NoSmoke);
+						ImGui::Checkbox(XorStr("No Flash"), &g_Options.Visuals.NoFlash);
+						ImGui::Checkbox(XorStr("No Scope"), &g_Options.Visuals.noscopeborder);
 
 					}
 					ImGui::EndChild();
@@ -726,9 +835,14 @@ void RenderInterface() {
 							unload = true;
 						}
 						ImGui::Checkbox("Anti-Untrusted", &g_Options.Misc.antiuntrusted);
-						ImGui::Checkbox("gamesense Clantag", &g_Options.Misc.syncclantag);
-						ImGui::Checkbox("breathless Clantag", &g_Options.Misc.breathless_clantag);
 						
+						ImGui::Combo(XorStr("Clantag"), &g_Options.Misc.clantag_SLN, ClanTags, ARRAYSIZE(ClanTags));
+						ImGui::Checkbox("Ayyware Crasher", &g_Options.Ragebot.ayywarecrasher);
+						ImGui::Checkbox("Name Spam", &g_Options.Misc.namespam);
+						
+						ImGui::Checkbox(XorStr("Bunny Hop"), &g_Options.Misc.Bhop);
+						ImGui::Checkbox(XorStr("AutoStrafe"), &g_Options.Misc.AutoStrafe);
+
 					}
 					ImGui::EndChild();
 
