@@ -20,7 +20,7 @@ ragebot::ragebot()
 	pTarget = nullptr;
 }
 
-
+static int aa_left_right = 1;
 
 void ragebot::OnCreateMove(CInput::CUserCmd *pCmd, bool& bSendPacket)
 {
@@ -63,8 +63,25 @@ void ragebot::OnCreateMove(CInput::CUserCmd *pCmd, bool& bSendPacket)
 		if (g_Options.Ragebot.FakeLag)
 			FakeLag(pCmd);
 
+
+
+		if (g_Options.Ragebot.flip_aa)
+		{
+			if (aa_left_right == 1)
+			{
+				aa_left_right = 0;
+			}
+			else if (aa_left_right == 0)
+			{
+				aa_left_right = 1;
+			}
+		}
+
 	}
 }
+
+
+
 bool ragebot::hit_chance(C_BaseEntity* local, CInput::CUserCmd* cmd, CBaseCombatWeapon* weapon, C_BaseEntity* target)
 {
 	Vector forward, right, up;
