@@ -17,6 +17,7 @@ private:
 
     void weapon_settings(CBaseCombatWeapon* weapon);
     bool hit_chance(C_BaseEntity* local, CInput::CUserCmd* cmd, CBaseCombatWeapon* weapon, C_BaseEntity* target);
+	
 
     void do_aimbot(C_BaseEntity *local, CBaseCombatWeapon *weapon, CInput::CUserCmd *cmd);
     QAngle get_randomized_recoil(C_BaseEntity* local);

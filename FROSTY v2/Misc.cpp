@@ -8,6 +8,7 @@
 std::string animatedclantag;
 int iLastTime;
 bool bDone = false;
+bool sliding = false;
 void misc::OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local)
 {
 
@@ -265,6 +266,30 @@ switch (value)
             }
             counter++;
 	}
+
+
+
+	if (g_Options.Misc.moonwalk)
+	{
+		if (sliding == false)
+		{
+			if (GetAsyncKeyState(0x57))	cmd->forwardmove = 450; // w
+			if (GetAsyncKeyState(0x53)) cmd->forwardmove = -450; // s
+			if (GetAsyncKeyState(0x44)) cmd->sidemove = 450;  // d
+			if (GetAsyncKeyState(0x41)) cmd->sidemove = -450;  // a
+			g_Engine->ClientCmd("bind w +back; bind s +forward; bind a +moveright; bind d +moveleft");
+			sliding = true;
+		}
+	}
+	else
+	{
+		if (sliding == true)
+		{
+			g_Engine->ClientCmd("bind w +forward; bind s +back; bind a +moveleft; bind d +moveright");
+			sliding = false;
+		}
+	}
+	
 	
 	if (g_Options.Misc.clantag_SLN == 1)
 		{
@@ -343,10 +368,11 @@ switch (value)
 			name[i] = fucked_char;
 
 		const char nick[14] = "breathless.cc";
-		memcpy(name, nick, 13);
+		memcpy(name, nick, 14);
 
 		SetName(name);
 	}
+
 
 	if (g_Options.Ragebot.ayywarecrasher)
 	{
@@ -382,8 +408,9 @@ switch (value)
 				name->SetValue(chName);
 			}
 		}
-
 	}
+
+
 }
 
 static vec_t Normalize_y(vec_t ang)
@@ -405,7 +432,6 @@ void misc::AutoStrafe(CInput::CUserCmd *cmd, C_BaseEntity *local, QAngle oldangl
 			cmd->sidemove = cmd->mousedx < 0.f ? -450.f : 450.f;
 		else
 		{
-			//wtf is this hardcoded number?
 			cmd->forwardmove = (1800.f * 4.f) / local->GetVelocity().Length2D();
 			cmd->sidemove = (cmd->command_number % 2 == 0 ? -450.f : 450.f);
 		}

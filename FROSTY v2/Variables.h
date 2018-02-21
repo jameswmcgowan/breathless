@@ -416,6 +416,8 @@ struct Variables
 		bool show_the_fucking_shit = false;
 		float dab_on_the_haters = 0.f;
 
+		bool legit_aa = false;
+
 
 	} Misc;
 	struct

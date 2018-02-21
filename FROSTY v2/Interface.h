@@ -843,6 +843,7 @@ void RenderInterface() {
 						ImGui::Checkbox(XorStr("Bunny Hop"), &g_Options.Misc.Bhop);
 						ImGui::Checkbox(XorStr("AutoStrafe"), &g_Options.Misc.AutoStrafe);
 
+						ImGui::Checkbox(XorStr("moonwalk"), &g_Options.Misc.moonwalk);
 					}
 					ImGui::EndChild();
 
