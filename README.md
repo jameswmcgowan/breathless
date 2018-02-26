@@ -2,11 +2,11 @@ breathless.cc
 
 fat p2c
 
-grounded
 lizard
 nn smuf
 
-best animation resolver 2k18 
+grounded is a faggot nn non-coder
+
 
 get @ us baby
 
