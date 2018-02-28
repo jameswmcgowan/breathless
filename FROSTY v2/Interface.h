@@ -860,6 +860,13 @@ void RenderInterface() {
 						ImGui::Checkbox(XorStr("fakewalk"), &g_Options.Misc.fakewalk);
 						ImGui::Hotkey(XorStr("##fakewalk key"), &g_Options.Misc.fakewalkkey);
 
+
+						ImGui::Text("Config");
+						ImGui::Combo(("File"), &g_Options.Menu.ConfigFile, configFiles, ARRAYSIZE(configFiles));
+						if (ImGui::Button("Save Config")) Config->Save();
+
+						if (ImGui::Button("Load Config")) Config->Load();
+
 					}
 					ImGui::EndChild();
 

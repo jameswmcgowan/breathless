@@ -79,55 +79,55 @@ void CConfig::Setup()
 	SetupValue(g_Options.Ragebot.walk_Jitter, false, ("RageBot"), ("walk_Jitter"));
 	SetupValue(g_Options.Ragebot.walk_FJitter, false, ("RageBot"), ("walk_FJitter"));
 	SetupValue(g_Options.Ragebot.walk_LBYBreaker, false, ("RageBot"), ("walk_LBYBreaker"));
-	SetupValue(g_Options.Ragebot.walk_BuilderReal, false, ("RageBot"), ("walk_BuilderReal"));
-	SetupValue(g_Options.Ragebot.walk_BuilderFake, false, ("RageBot"), ("walk_BuilderFake"));
-	SetupValue(g_Options.Ragebot.walk_BuilderPitch, false, ("RageBot"), ("walk_BuilderPitch"));
-	SetupValue(g_Options.Ragebot.walk_JitterRange, false, ("RageBot"), ("walk_JitterRange"));
-	SetupValue(g_Options.Ragebot.walk_FJitterRange, false, ("RageBot"), ("walk_FJitterRange"));
+	SetupValue(g_Options.Ragebot.walk_BuilderReal, 0, ("RageBot"), ("walk_BuilderReal"));
+	SetupValue(g_Options.Ragebot.walk_BuilderFake, 0, ("RageBot"), ("walk_BuilderFake"));
+	SetupValue(g_Options.Ragebot.walk_BuilderPitch, 0, ("RageBot"), ("walk_BuilderPitch"));
+	SetupValue(g_Options.Ragebot.walk_JitterRange, 0, ("RageBot"), ("walk_JitterRange"));
+	SetupValue(g_Options.Ragebot.walk_FJitterRange, 0, ("RageBot"), ("walk_FJitterRange"));
 
 	//ruinning builder aa's
 	SetupValue(g_Options.Ragebot.run_BuilderAAs, false, ("RageBot"), ("run_BuilderAAs"));
 	SetupValue(g_Options.Ragebot.run_Jitter, false, ("RageBot"), ("run_Jitter"));
 	SetupValue(g_Options.Ragebot.run_FJitter, false, ("RageBot"), ("run_FJitter"));
 	SetupValue(g_Options.Ragebot.run_LBYBreaker, false, ("RageBot"), ("run_LBYBreaker"));
-	SetupValue(g_Options.Ragebot.run_BuilderReal, false, ("RageBot"), ("run_BuilderReal"));
-	SetupValue(g_Options.Ragebot.run_BuilderFake, false, ("RageBot"), ("run_BuilderFake"));
-	SetupValue(g_Options.Ragebot.run_BuilderPitch, false, ("RageBot"), ("run_BuilderPitch"));
-	SetupValue(g_Options.Ragebot.run_JitterRange, false, ("RageBot"), ("run_JitterRange"));
-	SetupValue(g_Options.Ragebot.run_FJitterRange, false, ("RageBot"), ("run_FJitterRange"));
+	SetupValue(g_Options.Ragebot.run_BuilderReal, 0, ("RageBot"), ("run_BuilderReal"));
+	SetupValue(g_Options.Ragebot.run_BuilderFake, 0, ("RageBot"), ("run_BuilderFake"));
+	SetupValue(g_Options.Ragebot.run_BuilderPitch, 0, ("RageBot"), ("run_BuilderPitch"));
+	SetupValue(g_Options.Ragebot.run_JitterRange, 0, ("RageBot"), ("run_JitterRange"));
+	SetupValue(g_Options.Ragebot.run_FJitterRange, 0, ("RageBot"), ("run_FJitterRange"));
 
 	//crouching builder aa's
 	SetupValue(g_Options.Ragebot.crouch_BuilderAAs, false, ("RageBot"), ("crouch_BuilderAAs"));
 	SetupValue(g_Options.Ragebot.crouch_Jitter, false, ("RageBot"), ("crouch_Jitter"));
 	SetupValue(g_Options.Ragebot.crouch_FJitter, false, ("RageBot"), ("crouch_FJitter"));
 	SetupValue(g_Options.Ragebot.crouch_LBYBreaker, false, ("RageBot"), ("crouch_LBYBreaker"));
-	SetupValue(g_Options.Ragebot.crouch_BuilderReal, false, ("RageBot"), ("crouch_BuilderReal"));
-	SetupValue(g_Options.Ragebot.crouch_BuilderFake, false, ("RageBot"), ("crouch_BuilderFake"));
-	SetupValue(g_Options.Ragebot.crouch_BuilderPitch, false, ("RageBot"), ("crouch_BuilderPitch"));
-	SetupValue(g_Options.Ragebot.crouch_JitterRange, false, ("RageBot"), ("crouch_JitterRange"));
-	SetupValue(g_Options.Ragebot.crouch_FJitterRange, false, ("RageBot"), ("crouch_FJitterRange"));
+	SetupValue(g_Options.Ragebot.crouch_BuilderReal, 0, ("RageBot"), ("crouch_BuilderReal"));
+	SetupValue(g_Options.Ragebot.crouch_BuilderFake, 0, ("RageBot"), ("crouch_BuilderFake"));
+	SetupValue(g_Options.Ragebot.crouch_BuilderPitch, 0, ("RageBot"), ("crouch_BuilderPitch"));
+	SetupValue(g_Options.Ragebot.crouch_JitterRange, 0, ("RageBot"), ("crouch_JitterRange"));
+	SetupValue(g_Options.Ragebot.crouch_FJitterRange, 0, ("RageBot"), ("crouch_FJitterRange"));
 
 	//fakewalk builder aa's
 	SetupValue(g_Options.Ragebot.fwalk_BuilderAAs, false, ("RageBot"), ("fwalk_BuilderAAs"));
 	SetupValue(g_Options.Ragebot.fwalk_Jitter, false, ("RageBot"), ("fwalk_Jitter"));
 	SetupValue(g_Options.Ragebot.fwalk_FJitter, false, ("RageBot"), ("fwalk_FJitter"));
 	SetupValue(g_Options.Ragebot.fwalk_LBYBreaker, false, ("RageBot"), ("fwalk_LBYBreaker"));
-	SetupValue(g_Options.Ragebot.fwalk_BuilderReal, false, ("RageBot"), ("fwalk_BuilderReal"));
-	SetupValue(g_Options.Ragebot.fwalk_BuilderFake, false, ("RageBot"), ("fwalk_BuilderFake"));
-	SetupValue(g_Options.Ragebot.fwalk_BuilderPitch, false, ("RageBot"), ("fwalk_BuilderPitch"));
-	SetupValue(g_Options.Ragebot.fwalk_JitterRange, false, ("RageBot"), ("fwalk_JitterRange"));
-	SetupValue(g_Options.Ragebot.fwalk_FJitterRange, false, ("RageBot"), ("fwalk_FJitterRange"));
+	SetupValue(g_Options.Ragebot.fwalk_BuilderReal, 0, ("RageBot"), ("fwalk_BuilderReal"));
+	SetupValue(g_Options.Ragebot.fwalk_BuilderFake, 0, ("RageBot"), ("fwalk_BuilderFake"));
+	SetupValue(g_Options.Ragebot.fwalk_BuilderPitch, 0, ("RageBot"), ("fwalk_BuilderPitch"));
+	SetupValue(g_Options.Ragebot.fwalk_JitterRange, 0, ("RageBot"), ("fwalk_JitterRange"));
+	SetupValue(g_Options.Ragebot.fwalk_FJitterRange, 0, ("RageBot"), ("fwalk_FJitterRange"));
 
 	//standing builder aa's
 	SetupValue(g_Options.Ragebot.stand_BuilderAAs, false, ("RageBot"), ("stand_BuilderAAs"));
 	SetupValue(g_Options.Ragebot.stand_Jitter, false, ("RageBot"), ("stand_Jitter"));
 	SetupValue(g_Options.Ragebot.stand_FJitter, false, ("RageBot"), ("stand_FJitter"));
 	SetupValue(g_Options.Ragebot.stand_LBYBreaker, false, ("RageBot"), ("stand_LBYBreaker"));
-	SetupValue(g_Options.Ragebot.stand_BuilderReal, false, ("RageBot"), ("stand_BuilderReal"));
-	SetupValue(g_Options.Ragebot.stand_BuilderFake, false, ("RageBot"), ("stand_BuilderFake"));
-	SetupValue(g_Options.Ragebot.stand_BuilderPitch, false, ("RageBot"), ("stand_BuilderPitch"));
-	SetupValue(g_Options.Ragebot.stand_JitterRange, false, ("RageBot"), ("stand_JitterRange"));
-	SetupValue(g_Options.Ragebot.stand_FJitterRange, false, ("RageBot"), ("stand_FJitterRange"));
+	SetupValue(g_Options.Ragebot.stand_BuilderReal, 0, ("RageBot"), ("stand_BuilderReal"));
+	SetupValue(g_Options.Ragebot.stand_BuilderFake, 0, ("RageBot"), ("stand_BuilderFake"));
+	SetupValue(g_Options.Ragebot.stand_BuilderPitch, 0, ("RageBot"), ("stand_BuilderPitch"));
+	SetupValue(g_Options.Ragebot.stand_JitterRange, 0, ("RageBot"), ("stand_JitterRange"));
+	SetupValue(g_Options.Ragebot.stand_FJitterRange, 0, ("RageBot"), ("stand_FJitterRange"));
 
 
 	//BEGINNING OF PREBUILT AA'S
@@ -135,49 +135,53 @@ void CConfig::Setup()
 	//walking prebuild aa's  walk
 	SetupValue(g_Options.Ragebot.walk_PreAAs, false, ("RageBot"), ("walk_PreAAs"));
 	SetupValue(g_Options.Ragebot.walk_Pitch, false, ("RageBot"), ("walk_Pitch"));
-	SetupValue(g_Options.Ragebot.walk_PitchAdder, false, ("RageBot"), ("walk_PitchAdder"));
+	SetupValue(g_Options.Ragebot.walk_PitchAdder, 0, ("RageBot"), ("walk_PitchAdder"));
 	SetupValue(g_Options.Ragebot.walk_YawTrue, false, ("RageBot"), ("walk_YawTrue"));
-	SetupValue(g_Options.Ragebot.walk_YawTrueAdder, false, ("RageBot"), ("walk_YawTrueAdder"));
+	SetupValue(g_Options.Ragebot.walk_YawTrueAdder, 0, ("RageBot"), ("walk_YawTrueAdder"));
 	SetupValue(g_Options.Ragebot.walk_YawFake, false, ("RageBot"), ("walk_YawFake"));
-	SetupValue(g_Options.Ragebot.walk_YawFakeAdder, false, ("RageBot"), ("walk_YawFakeAdder"));
+	SetupValue(g_Options.Ragebot.walk_YawFakeAdder, 0, ("RageBot"), ("walk_YawFakeAdder"));
 
 	//running prebuild aa's
 	SetupValue(g_Options.Ragebot.run_PreAAs, false, ("RageBot"), ("run_PreAAs"));
 	SetupValue(g_Options.Ragebot.run_Pitch, false, ("RageBot"), ("run_Pitch"));
-	SetupValue(g_Options.Ragebot.run_PitchAdder, false, ("RageBot"), ("run_PitchAdder"));
+	SetupValue(g_Options.Ragebot.run_PitchAdder, 0, ("RageBot"), ("run_PitchAdder"));
 	SetupValue(g_Options.Ragebot.run_YawTrue, false, ("RageBot"), ("run_YawTrue"));
-	SetupValue(g_Options.Ragebot.run_YawTrueAdder, false, ("RageBot"), ("run_YawTrueAdder"));
+	SetupValue(g_Options.Ragebot.run_YawTrueAdder, 0, ("RageBot"), ("run_YawTrueAdder"));
 	SetupValue(g_Options.Ragebot.run_YawFake, false, ("RageBot"), ("run_YawFake"));
-	SetupValue(g_Options.Ragebot.run_YawFakeAdder, false, ("RageBot"), ("run_YawFakeAdder"));
+	SetupValue(g_Options.Ragebot.run_YawFakeAdder, 0, ("RageBot"), ("run_YawFakeAdder"));
 
 	//crouching prebuild aa's crouch
 	SetupValue(g_Options.Ragebot.crouch_PreAAs, false, ("RageBot"), ("_PreAAs"));
 	SetupValue(g_Options.Ragebot.crouch_Pitch, false, ("RageBot"), ("_Pitch"));
-	SetupValue(g_Options.Ragebot.crouch_PitchAdder, false, ("RageBot"), ("_PitchAdder"));
+	SetupValue(g_Options.Ragebot.crouch_PitchAdder, 0, ("RageBot"), ("_PitchAdder"));
 	SetupValue(g_Options.Ragebot.crouch_YawTrue, false, ("RageBot"), ("_YawTrue"));
-	SetupValue(g_Options.Ragebot.crouch_YawTrueAdder, false, ("RageBot"), ("_YawTrueAdder"));
+	SetupValue(g_Options.Ragebot.crouch_YawTrueAdder, 0, ("RageBot"), ("_YawTrueAdder"));
 	SetupValue(g_Options.Ragebot.crouch_YawFake, false, ("RageBot"), ("_YawFake"));
-	SetupValue(g_Options.Ragebot.crouch_YawFakeAdder, false, ("RageBot"), ("_YawFakeAdder"));
+	SetupValue(g_Options.Ragebot.crouch_YawFakeAdder, 0, ("RageBot"), ("_YawFakeAdder"));
 
 	//fakewalking prebuild aa's fwalk
 	SetupValue(g_Options.Ragebot.fwalk_PreAAs, false, ("RageBot"), ("fwalk_PreAAs"));
 	SetupValue(g_Options.Ragebot.fwalk_Pitch, false, ("RageBot"), ("fwalk_Pitch"));
-	SetupValue(g_Options.Ragebot.fwalk_PitchAdder, false, ("RageBot"), ("fwalk_PitchAdder"));
+	SetupValue(g_Options.Ragebot.fwalk_PitchAdder, 0, ("RageBot"), ("fwalk_PitchAdder"));
 	SetupValue(g_Options.Ragebot.fwalk_YawTrue, false, ("RageBot"), ("fwalk_YawTrue"));
-	SetupValue(g_Options.Ragebot.fwalk_YawTrueAdder, false, ("RageBot"), ("fwalk_YawTrueAdder"));
+	SetupValue(g_Options.Ragebot.fwalk_YawTrueAdder, 0, ("RageBot"), ("fwalk_YawTrueAdder"));
 	SetupValue(g_Options.Ragebot.fwalk_YawFake, false, ("RageBot"), ("fwalk_YawFake"));
-	SetupValue(g_Options.Ragebot.fwalk_YawFakeAdder, false, ("RageBot"), ("fwalk_YawFakeAdder"));
+	SetupValue(g_Options.Ragebot.fwalk_YawFakeAdder, 0, ("RageBot"), ("fwalk_YawFakeAdder"));
 
 	//standing prebuild aa's  stand
 	SetupValue(g_Options.Ragebot.stand_PreAAs, false, ("RageBot"), ("stand_PreAAs"));
 	SetupValue(g_Options.Ragebot.stand_Pitch, false, ("RageBot"), ("stand_Pitch"));
-	SetupValue(g_Options.Ragebot.stand_PitchAdder, false, ("RageBot"), ("stand_PitchAdder"));
+	SetupValue(g_Options.Ragebot.stand_PitchAdder, 0, ("RageBot"), ("stand_PitchAdder"));
 	SetupValue(g_Options.Ragebot.stand_YawTrue, false, ("RageBot"), ("stand_YawTrue"));
-	SetupValue(g_Options.Ragebot.stand_YawTrueAdder, false, ("RageBot"), ("stand_YawTrueAdder"));
+	SetupValue(g_Options.Ragebot.stand_YawTrueAdder, 0, ("RageBot"), ("stand_YawTrueAdder"));
 	SetupValue(g_Options.Ragebot.stand_YawFake, false, ("RageBot"), ("stand_YawFake"));
-	SetupValue(g_Options.Ragebot.stand_YawFakeAdder, false, ("RageBot"), ("stand_YawFakeAdder"));
+	SetupValue(g_Options.Ragebot.stand_YawFakeAdder, 0, ("RageBot"), ("stand_YawFakeAdder"));
 
-
+	SetupValue(g_Options.Ragebot.walk_allowflip, false, ("RageBot"), ("walk_allowflip"));
+	SetupValue(g_Options.Ragebot.run_allowflip, false, ("RageBot"), ("run_allowflip"));
+	SetupValue(g_Options.Ragebot.crouch_allowflip, false, ("RageBot"), ("crouch_allowflip"));
+	SetupValue(g_Options.Ragebot.fwalk_allowflip, false, ("RageBot"), ("fwalk_allowflip"));
+	SetupValue(g_Options.Ragebot.stand_allowflip, false, ("RageBot"), ("stand_allowflip"));
 
 	SetupValue(g_Options.Legitbot.MainSwitch, false, ("Legitbot"), ("LegitToggle"));
 	SetupValue(g_Options.Legitbot.Aimbot.Enabled, false, ("Legitbot"), ("Enabled"));
@@ -282,11 +286,13 @@ void CConfig::Setup()
 	SetupValue(g_Options.Visuals.Bomb, false, ("Visuals"), ("BombEsp"));
 
 
-
-
 	SetupValue(g_Options.Misc.Bhop, false, ("Misc"), ("Bhop"));
 	SetupValue(g_Options.Misc.AutoStrafe, false, ("Misc"), ("Autostrafe"));
-	SetupValue(g_Options.Misc.syncclantag, false, ("Misc"), ("Sync-Clantag"));
+	SetupValue(g_Options.Misc.clantag_SLN, 0, ("Misc"), ("clantag_SLN"));
+
+	SetupValue(g_Options.Misc.fakewalk, false, ("Misc"), ("fakewalk"));
+	SetupValue(g_Options.Misc.fakewalkkey, false, ("Misc"), ("fakewalkkey"));
+	SetupValue(g_Options.Misc.moonwalk, false, ("Misc"), ("moonwalk"));
 	// SetupValue(g_Options.Misc.SpecList, false, ("Misc"), ("speclist"));
 	// SetupValue(g_Options.Misc.ragequit, 0, ("Misc"), ("ragequit-key"));
 
