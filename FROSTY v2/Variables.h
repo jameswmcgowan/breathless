@@ -175,8 +175,14 @@ struct Variables
 		int		stand_YawFake;
 		float	stand_YawFakeAdder;
 
-		//aa warning variable
-		int error_type;
+
+		bool stand_allowflip;
+		bool fwalk_allowflip;
+		bool crouch_allowflip;
+		bool walk_allowflip;
+		bool run_allowflip;
+		
+		int error_type;  //aa warning variable
 
 		bool	FriendlyFire;
 		int		Hitbox;
