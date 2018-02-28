@@ -9,6 +9,8 @@ std::string animatedclantag;
 int iLastTime;
 bool bDone = false;
 bool sliding = false;
+int switchstate = 3;
+bool positive = true;
 void misc::OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local)
 {
 
@@ -22,6 +24,133 @@ void misc::OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local)
 				cmd->buttons &= ~IN_JUMP;
 		}
 	}
+
+	if (g_Options.Misc.moonwalk)
+	{
+		if (local->GetMoveType() == MOVETYPE_LADDER || local->GetMoveType() == MOVETYPE_NOCLIP)
+			return;
+
+		if (cmd->buttons & IN_FORWARD && cmd->buttons & IN_BACK)
+		{
+			cmd->forwardmove = 0.f;
+		}
+		else if (cmd->buttons & IN_FORWARD)
+		{
+			cmd->buttons &= ~IN_FORWARD;
+			cmd->buttons |= IN_BACK;
+			cmd->forwardmove = 450.f;
+		}
+		else if (cmd->buttons & IN_BACK)
+		{
+			cmd->buttons &= ~IN_BACK;
+			cmd->buttons |= IN_FORWARD;
+			cmd->forwardmove = -450.f;
+		}
+
+		if (cmd->buttons & IN_MOVELEFT && cmd->buttons & IN_MOVERIGHT)
+		{
+			cmd->sidemove = 0.f;
+		}
+		else if (cmd->buttons & IN_MOVELEFT)
+		{
+			cmd->buttons &= ~IN_MOVELEFT;
+			cmd->buttons |= IN_MOVERIGHT;
+			cmd->sidemove = -450.f;
+		}
+		else if (cmd->buttons & IN_MOVERIGHT)
+		{
+			cmd->buttons &= ~IN_MOVERIGHT;
+			cmd->buttons |= IN_MOVELEFT;
+			cmd->sidemove = 450.f;
+		}
+	}
+
+
+	if (g_Options.Misc.spookwalk)
+	{
+
+
+		if (switchstate == 3) positive = true;
+		if (switchstate == -3) positive = false;
+		
+		if (positive)
+		{
+			switchstate -= 1;
+		}
+		else
+		{
+			switchstate += 1;
+		}
+
+		if (local->GetMoveType() == MOVETYPE_LADDER || local->GetMoveType() == MOVETYPE_NOCLIP || cmd->buttons & IN_JUMP)
+			return;
+
+		if (cmd->buttons & IN_FORWARD && cmd->buttons & IN_BACK)
+		{
+			cmd->sidemove = 0.f;
+		}
+		if (cmd->buttons & IN_MOVELEFT && cmd->buttons & IN_MOVERIGHT)
+		{
+			cmd->forwardmove = 0.f;
+		}
+
+		if (cmd->buttons & IN_FORWARD && !(cmd->buttons & IN_BACK || cmd->buttons & IN_MOVELEFT || cmd->buttons & IN_MOVERIGHT))
+		{
+			if (switchstate < 0)
+			{
+
+				cmd->sidemove = -450.f;
+			}
+			else if (switchstate > 0)
+			{
+
+				cmd->sidemove = 450.f;
+			}
+		}
+
+		if (cmd->buttons & IN_BACK && !(cmd->buttons & IN_FORWARD || cmd->buttons & IN_MOVELEFT || cmd->buttons & IN_MOVERIGHT))
+		{
+			if (switchstate < 0)
+			{
+
+				cmd->sidemove = -450.f;
+			}
+			else if (switchstate > 0)
+			{
+
+				cmd->sidemove = 450.f;
+			}
+		}
+
+		if (cmd->buttons & IN_MOVELEFT && !(cmd->buttons & IN_FORWARD || cmd->buttons & IN_BACK || cmd->buttons & IN_MOVERIGHT))
+		{
+			if (switchstate < 0)
+			{
+				cmd->forwardmove = -450.f;
+			}
+			else if (switchstate > 0)
+			{
+				cmd->forwardmove = 450.f;
+			}
+		}
+
+		if (cmd->buttons & IN_MOVERIGHT && !(cmd->buttons & IN_FORWARD || cmd->buttons & IN_BACK || cmd->buttons & IN_MOVELEFT))
+		{
+			if (switchstate < 0)
+			{
+
+				cmd->forwardmove = -450.f;
+			}
+			else if (switchstate > 0)
+			{
+
+				cmd->forwardmove = 450.f;
+			}
+		}
+
+	}
+
+
 	if (g_Options.Misc.clantag_SLN == 2)
 	{
 		static int counter = 0;
@@ -31,266 +160,243 @@ void misc::OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local)
 		if (counter % 48 == 0)
 			motion++;
 		int value = ServerTime % 46;
-switch (value)
-            {
-            case 0:
-            {
-                setclantag("                  ");
-                break;
-            }
-            case 1:
-            {
-                setclantag("                 g");
-                break;
-            }
-            case 2:
-            {
-                setclantag("                ga");
-                break;
-            }
-            case 3:
-            {
-                setclantag("               gam");
-                break;
-            }
-            case 4:
-            {
-                setclantag("              game");
-                break;
-            }
-            case 5:
-            {
-                setclantag("             games");
-                break;
-            }
-            case 6:
-            {
-                setclantag("            gamese");
-                break;
-            }
-            case 7:
-            {
-                setclantag("           gamesen");
-                break;
-            }
-            case 8:
-            {
-                setclantag("          gamesens");
-                break;
-            }
-            case 9:
-            {
-                setclantag("         gamesense");
-                break;
-            }
-            case 10:
-            {
-                setclantag("        gamesense ");
-                break;
-            }
-            case 11:
-            {
-                setclantag("        gamesense ");
-                break;
-            }
-            case 12:
-            {
-                setclantag("        gamesense ");
-                break;
-            }
-            case 13:
-            {
-                setclantag("       gamesense  ");
-                break;
-            }
-            case 14:
-            {
-                setclantag("       gamesense  ");
-                break;
-            }
-            case 15:
-            {
-                setclantag("       gamesense  ");
-                break;
-            }
-            case 16:
-            {
-                setclantag("      gamesense   ");
-                break;
-            }
-            case 17:
-            {
-                setclantag("      gamesense   ");
-                break;
-            }
-            case 18:
-            {
-                setclantag("      gamesense   ");
-                break;
-            }
-            case 19:
-            {
-                setclantag("     gamesense    ");
-                break;
-            }
-            case 20:
-            {
-                setclantag("     gamesense    ");
-                break;
-            }
-            case 21:
-            {
-                setclantag("     gamesense    ");
-                break;
-            }
-            case 22:
-            {
-                setclantag("    gamesense     ");
-                break;
-            }
-            case 23:
-            {
-                setclantag("    gamesense     ");
-                break;
-            }
-            case 24:
-            {
-                setclantag("    gamesense     ");
-                break;
-            }
-            case 25:
-            {
-                setclantag("   gamesense      ");
-                break;
-            }
-            case 26:
-            {
-                setclantag("   gamesense      ");
-                break;
-            }
-            case 27:
-            {
-                setclantag("   gamesense      ");
-                break;
-            }
-            case 28:
-            {
-                setclantag("  gamesense       ");
-                break;
-            }
-            case 29:
-            {
-                setclantag("  gamesense       ");
-                break;
-            }
-            case 30:
-            {
-                setclantag("  gamesense       ");
-                break;
-            }
-            case 31:
-            {
-                setclantag(" gamesense        ");
-                break;
-            }
-            case 32:
-            {
-                setclantag(" gamesense        ");
-                break;
-            }
-            case 33:
-            {
-                setclantag(" gamesense        ");
-                break;
-            }
-            case 34:
-            {
-                setclantag("gamesense         ");
-                break;
-            }
-            case 35:
-            {
-                setclantag("gamesense         ");
-                break;
-            }
-            case 36:
-            {
-                setclantag("gamesense         ");
-                break;
-            }
-            case 37:
-            {
-                setclantag("amesense          ");
-                break;
-            }
-            case 38:
-            {
-                setclantag("mesense           ");
-                break;
-            }
-            case 39:
-            {
-                setclantag("esense            ");
-                break;
-            }
-            case 40:
-            {
-                setclantag("sense             ");
-                break;
-            }
-            case 41:
-            {
-                setclantag("ense              ");
-                break;
-            }
-            case 42:
-            {
-                setclantag("nse               ");
-                break;
-            }
-            case 43:
-            {
-                setclantag("se                ");
-                break;
-            }
-            case 44:
-            {
-                setclantag("e                 ");
-                break;
-            }
-            case 45:
-            {
-                setclantag("                  ");
-                break;
-            }
-            }
-            counter++;
-	}
-
-
-
-	if (g_Options.Misc.moonwalk)
-	{
-		if (sliding == false)
+		switch (value)
 		{
-			if (GetAsyncKeyState(0x57))	cmd->forwardmove = 450; // w
-			if (GetAsyncKeyState(0x53)) cmd->forwardmove = -450; // s
-			if (GetAsyncKeyState(0x44)) cmd->sidemove = 450;  // d
-			if (GetAsyncKeyState(0x41)) cmd->sidemove = -450;  // a
-			g_Engine->ClientCmd("bind w +back; bind s +forward; bind a +moveright; bind d +moveleft");
-			sliding = true;
-		}
-	}
-	else
-	{
-		if (sliding == true)
+		case 0:
 		{
-			g_Engine->ClientCmd("bind w +forward; bind s +back; bind a +moveleft; bind d +moveright");
-			sliding = false;
+			setclantag("                  ");
+			break;
 		}
+		case 1:
+		{
+			setclantag("                 g");
+			break;
+		}
+		case 2:
+		{
+			setclantag("                ga");
+			break;
+		}
+		case 3:
+		{
+			setclantag("               gam");
+			break;
+		}
+		case 4:
+		{
+			setclantag("              game");
+			break;
+		}
+		case 5:
+		{
+			setclantag("             games");
+			break;
+		}
+		case 6:
+		{
+			setclantag("            gamese");
+			break;
+		}
+		case 7:
+		{
+			setclantag("           gamesen");
+			break;
+		}
+		case 8:
+		{
+			setclantag("          gamesens");
+			break;
+		}
+		case 9:
+		{
+			setclantag("         gamesense");
+			break;
+		}
+		case 10:
+		{
+			setclantag("        gamesense ");
+			break;
+		}
+		case 11:
+		{
+			setclantag("        gamesense ");
+			break;
+		}
+		case 12:
+		{
+			setclantag("        gamesense ");
+			break;
+		}
+		case 13:
+		{
+			setclantag("       gamesense  ");
+			break;
+		}
+		case 14:
+		{
+			setclantag("       gamesense  ");
+			break;
+		}
+		case 15:
+		{
+			setclantag("       gamesense  ");
+			break;
+		}
+		case 16:
+		{
+			setclantag("      gamesense   ");
+			break;
+		}
+		case 17:
+		{
+			setclantag("      gamesense   ");
+			break;
+		}
+		case 18:
+		{
+			setclantag("      gamesense   ");
+			break;
+		}
+		case 19:
+		{
+			setclantag("     gamesense    ");
+			break;
+		}
+		case 20:
+		{
+			setclantag("     gamesense    ");
+			break;
+		}
+		case 21:
+		{
+			setclantag("     gamesense    ");
+			break;
+		}
+		case 22:
+		{
+			setclantag("    gamesense     ");
+			break;
+		}
+		case 23:
+		{
+			setclantag("    gamesense     ");
+			break;
+		}
+		case 24:
+		{
+			setclantag("    gamesense     ");
+			break;
+		}
+		case 25:
+		{
+			setclantag("   gamesense      ");
+			break;
+		}
+		case 26:
+		{
+			setclantag("   gamesense      ");
+			break;
+		}
+		case 27:
+		{
+			setclantag("   gamesense      ");
+			break;
+		}
+		case 28:
+		{
+			setclantag("  gamesense       ");
+			break;
+		}
+		case 29:
+		{
+			setclantag("  gamesense       ");
+			break;
+		}
+		case 30:
+		{
+			setclantag("  gamesense       ");
+			break;
+		}
+		case 31:
+		{
+			setclantag(" gamesense        ");
+			break;
+		}
+		case 32:
+		{
+			setclantag(" gamesense        ");
+			break;
+		}
+		case 33:
+		{
+			setclantag(" gamesense        ");
+			break;
+		}
+		case 34:
+		{
+			setclantag("gamesense         ");
+			break;
+		}
+		case 35:
+		{
+			setclantag("gamesense         ");
+			break;
+		}
+		case 36:
+		{
+			setclantag("gamesense         ");
+			break;
+		}
+		case 37:
+		{
+			setclantag("amesense          ");
+			break;
+		}
+		case 38:
+		{
+			setclantag("mesense           ");
+			break;
+		}
+		case 39:
+		{
+			setclantag("esense            ");
+			break;
+		}
+		case 40:
+		{
+			setclantag("sense             ");
+			break;
+		}
+		case 41:
+		{
+			setclantag("ense              ");
+			break;
+		}
+		case 42:
+		{
+			setclantag("nse               ");
+			break;
+		}
+		case 43:
+		{
+			setclantag("se                ");
+			break;
+		}
+		case 44:
+		{
+			setclantag("e                 ");
+			break;
+		}
+		case 45:
+		{
+			setclantag("                  ");
+			break;
+		}
+		}
+		counter++;
 	}
-	
-	
+
+
 	if (g_Options.Misc.clantag_SLN == 1)
 		{
 		static int counter = 0;
@@ -424,17 +530,51 @@ static vec_t Normalize_y(vec_t ang)
 
 void misc::AutoStrafe(CInput::CUserCmd *cmd, C_BaseEntity *local, QAngle oldangles)
 {
-	static AutoStrafer Strafer;
-
-	if (!(local->GetFlags() & FL_ONGROUND))
+	if (g_Options.Misc.AutoStrafe)
 	{
-		if (cmd->mousedx > 1 || cmd->mousedx < -1)
-			cmd->sidemove = cmd->mousedx < 0.f ? -450.f : 450.f;
-		else
+		static AutoStrafer Strafer;
+
+		if (!(local->GetFlags() & FL_ONGROUND))
 		{
-			cmd->forwardmove = (1800.f * 4.f) / local->GetVelocity().Length2D();
-			cmd->sidemove = (cmd->command_number % 2 == 0 ? -450.f : 450.f);
+			if (cmd->mousedx > 1 || cmd->mousedx < -1)
+				cmd->sidemove = cmd->mousedx < 0.f ? -450.f : 450.f;
+			else
+			{
+				cmd->forwardmove = (1800.f * 4.f) / local->GetVelocity().Length2D();
+				cmd->sidemove = (cmd->command_number % 2 == 0 ? -450.f : 450.f);
+			}
+		}
+		movementfix(oldangles, cmd);
+	}
+}
+
+
+void misc::FakeWalk(CInput::CUserCmd* pCmd, bool &bSendPacket, C_BaseEntity *local)
+{
+	
+	if (g_Options.Misc.fakewalk)
+	{
+		int FakeWalkKey = g_Options.Misc.fakewalkkey;
+		if (FakeWalkKey > 0 && G::PressedKeys[g_Options.Misc.fakewalkkey])
+		{
+			static int chocking = -1;
+			chocking++;
+
+			if (chocking < 3)
+			{
+				bSendPacket = false;
+				pCmd->tick_count += 10;
+				pCmd += 7 + pCmd->tick_count % 2 ? 0 : 1;
+				pCmd->buttons |= local->GetMoveType() == IN_BACK;
+				pCmd->forwardmove = pCmd->sidemove = 0.f;
+			}
+			else
+			{
+				bSendPacket = true;
+				chocking = -1;
+				g_Globals->frametime *= (local->GetVelocity().Length2D()) / 1.f;
+				pCmd->buttons |= local->GetMoveType() == IN_FORWARD;
+			}
 		}
 	}
-	movementfix(oldangles, cmd);
 }

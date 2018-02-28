@@ -844,6 +844,11 @@ void RenderInterface() {
 						ImGui::Checkbox(XorStr("AutoStrafe"), &g_Options.Misc.AutoStrafe);
 
 						ImGui::Checkbox(XorStr("moonwalk"), &g_Options.Misc.moonwalk);
+						ImGui::Checkbox(XorStr("spookwalk"), &g_Options.Misc.spookwalk);
+
+						ImGui::Checkbox(XorStr("fakewalk"), &g_Options.Misc.fakewalk);
+						ImGui::Hotkey(XorStr("##fakewalk key"), &g_Options.Misc.fakewalkkey);
+
 					}
 					ImGui::EndChild();
 

@@ -80,10 +80,8 @@ void __stdcall CHLCreateMove(int sequence_number, float input_sample_frametime, 
 	RankReveal(cmd);
 
 	misc::instance().OnCreateMove(cmd, local);
-
-	if (g_Options.Misc.AutoStrafe)
-		misc::AutoStrafe(cmd, local, cmd->viewangles);
-
+	misc::AutoStrafe(cmd, local, cmd->viewangles);
+	misc::FakeWalk(cmd, bSendPacket, local);
 	legitbot::instance().OnCreateMove(cmd, local);
 	ragebot::instance().OnCreateMove(cmd, bSendPacket);
 

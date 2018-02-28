@@ -418,6 +418,12 @@ struct Variables
 
 		bool legit_aa = false;
 
+		bool moonwalk = false;
+		bool spookwalk = false;
+
+		int fakewalkkey;
+		bool fakewalk = false;
+
 
 	} Misc;
 	struct

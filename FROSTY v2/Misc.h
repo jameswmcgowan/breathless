@@ -15,6 +15,10 @@ public:
 	void OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local);
 
 	static void AutoStrafe(CInput::CUserCmd *cmd, C_BaseEntity *local, QAngle oldangles);
+
+	static void misc::FakeWalk(CInput::CUserCmd* pCmd, bool &bSendPacket, C_BaseEntity *local);
+
+
 	//void Slowmo(CInput::CUserCmd *pCmd, bool &bSendPacket);
 };
 template<class T, class U>
