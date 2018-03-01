@@ -224,17 +224,9 @@ HRESULT _stdcall hkPresent(LPDIRECT3DDEVICE9 pDevice, RECT* pSourceRect, RECT* p
 
 	if (is_renderer_active)
 	{
-		RenderInterface();
-		if (g_Options.Misc.dab_on_the_haters < 1.f)
-		{
-			g_Options.Misc.dab_on_the_haters += 0.01f;
-		}
-		
+		RenderInterface();		
 	}
-	else
-	{
-		g_Options.Misc.dab_on_the_haters = 0.f;
-	}
+
 	if (g_Options.Visuals.EventLog)
 	{
 		purchase.on_fire_event(nullptr, true);

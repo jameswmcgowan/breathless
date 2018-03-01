@@ -281,59 +281,7 @@ void RenderInterface() {
 				}
 			}ImGui::End();
 		}
-		auto& style = ImGui::GetStyle();
-
-		static int hue = 140;
-		ImVec4 col_text = ImColor::HSV(hue / 255.f, 20.f / 255.f, 235.f / 255.f);
-		ImVec4 col_theme = ImColor(17, 17, 17);
-		ImVec4 col_main = ImColor(9, 82, 128);
-		ImVec4 col_back = ImColor(35, 35, 35);
-		ImVec4 col_area = ImColor(4, 32, 41);
-
-		style.Colors[ImGuiCol_Text] = ImVec4(0.98f, 0.98f, 0.98f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_TextDisabled] = ImVec4(0.30f, 0.30f, 0.30f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_WindowBg] = ImVec4(0.1f, 0.1f, 0.1f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ChildWindowBg] = ImVec4(0.07f, 0.07f, 0.07f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_Border] = ImVec4(0.27f, 0.27f, .27f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_FrameBg] = ImVec4(0.14f, 0.14f, 0.14f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.13, 0.13, 0.13, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_FrameBgActive] = ImVec4(0.11, 0.11, 0.11, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_TitleBg] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_TitleBgActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_MenuBarBg] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.1f, 0.1f, 0.1f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ScrollbarGrab] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ComboBg] = ImVec4(0.15, 0.15, 0.15, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_CheckMark] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_SliderGrab] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_Button] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ButtonHovered] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ButtonActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_Header] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.53f, 0.69f, 0.1f, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_HeaderActive] = ImVec4(col_theme.x, col_theme.y, col_theme.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_Column] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ColumnHovered] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ColumnActive] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ResizeGrip] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_CloseButton] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_CloseButtonHovered] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_CloseButtonActive] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_PlotLines] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_PlotLinesHovered] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_PlotHistogram] = ImVec4(col_text.x, col_text.y, col_text.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_PopupBg] = ImVec4(col_main.x, col_main.y, col_main.z, g_Options.Misc.dab_on_the_haters);
-		style.Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(0.20f, 0.20f, 0.20f, g_Options.Misc.dab_on_the_haters);
-
+	
 
 
 		if (ImGui::Begin("##chet", &is_renderer_active, ImVec2(750, 608), 1.f, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse))
@@ -384,10 +332,10 @@ void RenderInterface() {
 			static int tabselected = 0;
 			ImGui::BeginChild("##tabshit", ImVec2(100.f, 580.f));
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.07, 0.07, 0.07, goddamnalpha));
-				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.07, 0.07, 0.07, goddamnalpha));
-				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.07, 0.07, 0.07, goddamnalpha));
-				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.07, 0.07, 0.07, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.07, 0.07, 0.07, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.07, 0.07, 0.07, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, 1.f));
 				ImGui::PushFont(fskeet);
 				if (ImGui::Button("a", ImVec2(100, 93)))
 					tabselected = 0;
@@ -411,10 +359,10 @@ void RenderInterface() {
 			
 			ImGui::BeginChild("##b1g main area", ImVec2(625.f, 580.f));
 			{
-				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.14f, 0.14f, 0.14f, goddamnalpha));
-				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.17f, 0.17f, 0.17f, goddamnalpha));
-				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.17f, 0.17f, 0.17f, goddamnalpha));
-				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, goddamnalpha));
+				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.14f, 0.14f, 0.14f, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.17f, 0.17f, 0.17f, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.17f, 0.17f, 0.17f, 1.f));
+				ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.07f, 0.07f, 0.07f, 1.f));
 				ImGui::PushFont(fDefault);
 				if (tabselected == 0)
 				{
@@ -476,7 +424,7 @@ void RenderInterface() {
 						ImGui::Separator();
 
 						ImGui::Checkbox(XorStr("Fakelag Fix"), &g_Options.Ragebot.FakeLagFix);
-						ImGui::Checkbox(XorStr("Position Adjustment"), &g_Options.Ragebot.PosAdjust);
+						ImGui::Checkbox(XorStr("Rage BackTrack"), &g_Options.Ragebot.PosAdjust);
 
 						ImGui::Separator();
 
@@ -738,20 +686,46 @@ void RenderInterface() {
 
 
 					ImGui::PushFont(fDefault);
-					ImGui::BeginChild("##big shit here", ImVec2(625.f, 470.f));
+					ImGui::BeginChild("##big shit here", ImVec2(625.f, 250.f));
 					{
 						switch (legitguntab)
 						{
 						case 0:
-							ImGui::Text("snipers");
+							ImGui::Text("Snipers");
+							ImGui::PushItemWidth(184);
+							ImGui::Hotkey(XorStr("Key##2"), &g_Options.Legitbot.SniperKey);
+							ImGui::SliderFloat(XorStr("Smooth##2"), &g_Options.Legitbot.SniperSmooth, 1.00f, 100.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("FOV##2"), &g_Options.Legitbot.Sniperfov, 0.00f, 30.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("Min RCS##2"), &g_Options.Legitbot.sniper_recoil_min, 1.00f, 100.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("Max RCS##2"), &g_Options.Legitbot.sniper_recoil_max, 1.00f, 100.00f, "%.2f");
 							break;
 						case 1:
-							ImGui::Text("rifles");
+							ImGui::Text("Rifles");
+							ImGui::PushItemWidth(184);
+							ImGui::Hotkey(XorStr("Key##0"), &g_Options.Legitbot.MainKey);
+							ImGui::SliderFloat(XorStr("Smooth##0"), &g_Options.Legitbot.MainSmooth, 1.00f, 100.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("FOV##0"), &g_Options.Legitbot.Mainfov, 0.00f, 30.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("Min RCS##0"), &g_Options.Legitbot.main_recoil_min, 1.00f, 100.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("Max RCS##0"), &g_Options.Legitbot.main_recoil_max, 1.00f, 100.00f, "%.2f");
+							ImGui::Separator();
+							ImGui::Checkbox(XorStr("Legit Backtrack"), &g_Options.Legitbot.backtrack);
+							ImGui::SliderFloat(XorStr("Ticks: "), &g_Options.Legitbot.backtrackTicks, 0, 12, "%1.f");
 							break;
 						case 2:
-							ImGui::Text("pistols");
+							ImGui::Text("Pistols");
+							ImGui::PushItemWidth(184);
+							ImGui::Hotkey(XorStr("Key##1"), &g_Options.Legitbot.PistolKey);
+							ImGui::SliderFloat(XorStr("Smooth##1"), &g_Options.Legitbot.PistolSmooth, 1.00f, 100.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("FOV##1"), &g_Options.Legitbot.Pistolfov, 0.00f, 30.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("Min RCS##1"), &g_Options.Legitbot.pistol_recoil_min, 1.00f, 100.00f, "%.2f");
+							ImGui::SliderFloat(XorStr("Max RCS##1"), &g_Options.Legitbot.pistol_recoil_max, 1.00f, 100.00f, "%.2f");
 							break;							
 						}
+					}
+					ImGui::EndChild();
+					ImGui::BeginChild("##more legitbot stuff", ImVec2(625.f, 200.f));
+					{
+
 					}
 					ImGui::EndChild();
 
