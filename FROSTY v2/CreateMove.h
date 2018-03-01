@@ -20,30 +20,22 @@ void __stdcall CHLCreateMove(int sequence_number, float input_sample_frametime, 
 		return;
 
 	static float next_time = 0;
+
 	if (!Globals::ySwitch && local->IsAlive() && local->GetVelocity().Length2D() == 0)
 	{
 
 		float TickStuff = TICKS_TO_TIME(local->GetTickBase());
-
 		Globals::shouldflip = false;
-
 		bool moveFlip;
-
 		Globals::NextTime = next_time;
 
-		if (next_time - TICKS_TO_TIME(local->GetTickBase()) > 1.1)
-		{
-			next_time = 0;
-		}
+		if (next_time - TICKS_TO_TIME(local->GetTickBase()) > 1.1) next_time = 0;
 
-		if (local->GetVelocity().Length2D() > 1)
-		{
-			moveFlip = true;
-		}
+		if (local->GetVelocity().Length2D() > 1) moveFlip = true;
 
 		if (local->GetVelocity().Length2D() == 0 && !moveFlip)
 		{
-			if (TickStuff > next_time + 1.1f)
+			if (TickStuff > next_time + 1.1f) // 1.1
 			{
 				next_time = TickStuff + TICKS_TO_TIME(1);
 				Globals::shouldflip = true;
@@ -51,7 +43,7 @@ void __stdcall CHLCreateMove(int sequence_number, float input_sample_frametime, 
 		}
 		else if (moveFlip && local->GetVelocity().Length2D() == 0)
 		{
-			if (TickStuff > next_time + 0.22f)
+			if (TickStuff > next_time + 0.22f) // 0.22
 			{
 				next_time = TickStuff + TICKS_TO_TIME(1);
 				Globals::shouldflip = true;

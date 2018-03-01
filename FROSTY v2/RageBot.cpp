@@ -812,10 +812,15 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 
 			if (g_Options.Ragebot.walk_allowflip && g_Options.Ragebot.walk_PreAAs)
 			{
-				switch (aa_left_right)
+				if ((g_Options.Ragebot.walk_BuilderFake == 1) && (g_Options.Ragebot.walk_BuilderReal == 1))
 				{
-				case 0: g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f; break;
-				case 1: g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f; break;
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
+				}
+				else
+				{
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
 				}
 			}
 			else
@@ -851,10 +856,15 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 
 			if (g_Options.Ragebot.run_allowflip && g_Options.Ragebot.run_PreAAs)
 			{
-				switch (aa_left_right)
+				if ((g_Options.Ragebot.run_BuilderFake == 1) && (g_Options.Ragebot.run_BuilderReal == 1))
 				{
-				case 0: g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f; break;
-				case 1: g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f; break;
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
+				}
+				else
+				{
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
 				}
 			}
 			else
@@ -891,10 +901,15 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 
 			if (g_Options.Ragebot.crouch_allowflip && g_Options.Ragebot.crouch_PreAAs)
 			{
-				switch (aa_left_right)
+				if ((g_Options.Ragebot.crouch_BuilderFake == 1) && (g_Options.Ragebot.crouch_BuilderReal == 1))
 				{
-				case 0: g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f; break;
-				case 1: g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f; break;
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
+				}
+				else
+				{
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
 				}
 			}
 			else
@@ -929,10 +944,15 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 
 			if (g_Options.Ragebot.fwalk_allowflip && g_Options.Ragebot.fwalk_PreAAs)
 			{
-				switch (aa_left_right)
+				if ((g_Options.Ragebot.fwalk_BuilderFake == 1) && (g_Options.Ragebot.fwalk_BuilderReal == 1))
 				{
-				case 0: g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f; break;
-				case 1: g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f; break;
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
+				}
+				else
+				{
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
 				}
 			}
 			else
@@ -967,10 +987,15 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 
 			if (g_Options.Ragebot.stand_allowflip && g_Options.Ragebot.stand_PreAAs)
 			{
-				switch (aa_left_right)
+				if ((g_Options.Ragebot.stand_BuilderFake == 1) && (g_Options.Ragebot.stand_BuilderReal == 1))
 				{
-				case 0: g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f; break;
-				case 1: g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f; break;
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
+				}
+				else
+				{
+					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
+					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
 				}
 			}
 			else
@@ -978,6 +1003,7 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 				g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.stand_YawTrueAdder;
 				g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.stand_YawFakeAdder;
 			}
+			
 		}
 	}
 
