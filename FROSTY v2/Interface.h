@@ -377,7 +377,10 @@ void RenderInterface() {
 						ImGui::Checkbox(XorStr("Silent Aim"), &g_Options.Ragebot.Silent);
 						ImGui::Checkbox(XorStr("AutoPistol"), &g_Options.Ragebot.AutoPistol);
 						ImGui::Checkbox(XorStr("NoRecoil"), &g_Options.Ragebot.AntiRecoil);
+
 						ImGui::Checkbox(XorStr("Auto Stop"), &g_Options.Ragebot.AutoStop);
+						ImGui::Hotkey(XorStr("##autostop key"), &g_Options.Ragebot.autostopkey);
+
 						ImGui::Checkbox(XorStr("Auto Crouch"), &g_Options.Ragebot.AutoCrouch);
 						ImGui::Checkbox(XorStr("Auto Scope"), &g_Options.Ragebot.AutoScope);
 
@@ -422,9 +425,9 @@ void RenderInterface() {
 						ImGui::SliderFloat(XorStr("Shots: "), &g_Options.Ragebot.bruteAfterX, 0, 10, "%1.f");
 
 						ImGui::Separator();
-
-						ImGui::Checkbox(XorStr("Fakelag Fix"), &g_Options.Ragebot.FakeLagFix);
+						
 						ImGui::Checkbox(XorStr("Rage BackTrack"), &g_Options.Ragebot.PosAdjust);
+						ImGui::Checkbox(XorStr("Fakelag Patch"), &g_Options.Ragebot.FakeLagFix);
 
 						ImGui::Separator();
 

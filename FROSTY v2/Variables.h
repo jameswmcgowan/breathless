@@ -194,6 +194,7 @@ struct Variables
 		bool	AntiRecoil;
 		bool	AutoWall;
 		bool	AutoStop;
+		int		autostopkey;
 		bool	AutoCrouch;
 		bool	AutoScope;
 		float	MinimumDamageSniper;

@@ -294,8 +294,11 @@ void ragebot::DoAimbot(CInput::CUserCmd *pCmd, bool& bSendPacket)
 
 		if (g_Options.Ragebot.AutoStop)
 		{
-			pCmd->forwardmove = 0.f;
-			pCmd->sidemove = 0.f;
+			if (g_Options.Ragebot.autostopkey && G::PressedKeys[g_Options.Ragebot.autostopkey])
+			{
+				pCmd->forwardmove = 0.f;
+				pCmd->sidemove = 0.f;
+			}
 		}
 
 
