@@ -6,6 +6,106 @@
 #include <string>
 #include <sstream>
 #include "XorStr.hpp"
+#include "HookIncludes.h"
+
+const char* GetWeaponName(int iWeaponID)
+{
+	switch (iWeaponID)
+	{
+	default:
+		return "none";
+	case WEAPON_DEAGLE:
+		return "deagle";
+	case WEAPON_DUALS:
+		return "duals";
+	case WEAPON_FIVE7:
+		return "five7";
+	case WEAPON_GLOCK:
+		return "glock";
+	case WEAPON_AK47:
+		return "ak47";
+	case WEAPON_AUG:
+		return "aug";
+	case WEAPON_AWP:
+		return "awp";
+	case WEAPON_FAMAS:
+		return "famas";
+	case WEAPON_G3SG1:
+		return "g3sg1";
+	case WEAPON_GALIL:
+		return "galil";
+	case WEAPON_M249:
+		return "m249";
+	case WEAPON_M4A1:
+		return "m4a4";
+	case WEAPON_MAC10:
+		return "mac10";
+	case WEAPON_P90:
+		return "p90";
+	case WEAPON_UMP45:
+		return "ump45";
+	case WEAPON_XM1014:
+		return "xm1014";
+	case WEAPON_BIZON:
+		return "bizon";
+	case WEAPON_MAG7:
+		return "mag7";
+	case WEAPON_NEGEV:
+		return "negev";
+	case WEAPON_SAWEDOFF:
+		return "sawedoff";
+	case WEAPON_TEC9:
+		return "tec9";
+	case WEAPON_TASER:
+		return "taser";
+	case WEAPON_USPS:
+		return "usp-s";
+	case WEAPON_MP7:
+		return "mp7";
+	case WEAPON_MP9:
+		return "mp9";
+	case WEAPON_NOVA:
+		return "nova";
+	case WEAPON_P250:
+		return "p250";
+	case WEAPON_SCAR20:
+		return "scar20";
+	case WEAPON_SG553:
+		return "sg556";
+	case WEAPON_SCOUT:
+		return "ssg08";
+	case WEAPON_M4A1S:
+		return "m4a1-s";
+	case WEAPON_P2000:
+		return "p2000";
+	case WEAPON_CZ75:
+		return "cz75";
+	case WEAPON_REVOLVER:
+		return "revolver";
+	case WEAPON_KNIFE_BAYONET:
+		return "bayonet";
+	case WEAPON_KNIFE_BUTTERFLY:
+		return "butterfly";
+	case WEAPON_KNIFE_FALCHION:
+		return "falshion";
+	case WEAPON_KNIFE_FLIP:
+		return "flip";
+	case WEAPON_KNIFE_GUT:
+		return "gut";
+	case WEAPON_KNIFE_KARAMBIT:
+		return "karambit";
+	case WEAPON_KNIFE_M9BAYONET:
+		return "m9";
+	case WEAPON_KNIFE_HUNTSMAN:
+		return "huntsman";
+	case WEAPON_KNIFE_BOWIE:
+		return "bowie";
+	case WEAPON_KNIFE_DAGGER:
+		return "daggers";
+	}
+}
+
+
 void CConfig::Setup()
 {
 
@@ -322,6 +422,24 @@ void CConfig::Setup()
 	SetupValue(g_Options.Skinchanger.tec9Skin, 0, ("SkinChanger"), ("tec9Skin"));
 	SetupValue(g_Options.Skinchanger.P2000Skin, 0, ("SkinChanger"), ("P2000Skin"));
 	SetupValue(g_Options.Skinchanger.P250Skin, 0, ("SkinChanger"), ("P250Skin"));*/
+
+	SetupValue(g_Options.Skinchanger.Enabled, false, ("skins"), ("enable"));
+	SetupValue(g_Options.Skinchanger.gloeskin, 0, ("skins"), ("gloveskin"));
+	SetupValue(g_Options.Skinchanger.glove, 0, ("skins"), ("glove"));
+	SetupValue(g_Options.Skinchanger.knifemodel, 0, ("skins"), ("modelknife"));
+
+	for (int id = 0; id < 64; id++) { // Weapons
+		SetupValue(g_Options.Skinchanger.W[id].ChangerSkin, 0, GetWeaponName(id), ("Skin"));
+	}
+
+	for (int id = 500; id <= 516; id++) { // knifes
+
+		if ((id < 505 && id >= 501) || (id > 512 && id < 514))
+			continue;
+
+		SetupValue(g_Options.Skinchanger.W[id].ChangerSkin, 0, GetWeaponName(id), ("Skin"));
+
+	}
 }
 
 void CConfig::SetupValue(int &value, int def, std::string category, std::string name)
