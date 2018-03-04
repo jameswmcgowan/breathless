@@ -388,6 +388,7 @@ void RenderInterface() {
 						ImGui::Checkbox(XorStr("Anti-Aim Enabled"), &g_Options.Ragebot.EnabledAntiAim);
 
 
+
 						ImGui::Checkbox(XorStr("Auto Fire"), &g_Options.Ragebot.AutoFire);
 					}
 					ImGui::EndChild();
@@ -447,6 +448,7 @@ void RenderInterface() {
 						ImGui::Text(XorStr("BAIM Key ;)  "));
 						ImGui::SameLine();
 						ImGui::Hotkey(XorStr("##biggest gay"), &g_Options.Ragebot.BAIMkey);
+						ImGui::Hotkey(XorStr("##dawjbdkajwbwd"), &g_Options.Ragebot.flipkey);
 
 						
 					}
@@ -498,7 +500,7 @@ void RenderInterface() {
 							{
 								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.run_PreAAs);
 								ImGui::SameLine();
-								ImGui::Checkbox("Enable Flip (F)", &g_Options.Ragebot.run_allowflip);
+								ImGui::Checkbox("fakehead", &g_Options.Ragebot.run_fakehead);
 								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.run_Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
 								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.run_PitchAdder, -180, 180, "%1.f");
 								ImGui::Separator();
@@ -533,7 +535,7 @@ void RenderInterface() {
 							{
 								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.walk_PreAAs);
 								ImGui::SameLine();
-								ImGui::Checkbox("Enable Flip (F)", &g_Options.Ragebot.walk_allowflip);
+								ImGui::Checkbox("fakehead", &g_Options.Ragebot.walk_fakehead);
 								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.walk_Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
 								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.walk_PitchAdder, -180, 180, "%1.f");
 								ImGui::Separator();
@@ -569,7 +571,7 @@ void RenderInterface() {
 							{
 								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.stand_PreAAs);
 								ImGui::SameLine();
-								ImGui::Checkbox("Enable Flip (F)", &g_Options.Ragebot.stand_allowflip);
+								ImGui::Checkbox("fakehead", &g_Options.Ragebot.stand_fakehead);
 								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.stand_Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
 								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.stand_PitchAdder, -180, 180, "%1.f");
 								ImGui::Separator();
@@ -578,6 +580,7 @@ void RenderInterface() {
 								ImGui::Separator();
 								ImGui::Combo(XorStr("Fake-Yaw"), &g_Options.Ragebot.stand_YawFake, antiaimyawfake, ARRAYSIZE(antiaimyawfake));
 								ImGui::SliderFloat(XorStr("Fake Adder: "), &g_Options.Ragebot.stand_YawFakeAdder, -180, 180, "%1.f");
+								
 							}
 							else if (aatabtype2 == 1)
 							{
@@ -606,7 +609,7 @@ void RenderInterface() {
 							{
 								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.fwalk_PreAAs);
 								ImGui::SameLine();
-								ImGui::Checkbox("Enable Flip (F)", &g_Options.Ragebot.fwalk_allowflip);
+								ImGui::Checkbox("fakehead", &g_Options.Ragebot.fwalk_fakehead);
 								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.fwalk_Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
 								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.fwalk_PitchAdder, -180, 180, "%1.f");
 								ImGui::Separator();
@@ -642,7 +645,7 @@ void RenderInterface() {
 							{
 								ImGui::Checkbox(XorStr("Enable"), &g_Options.Ragebot.crouch_PreAAs);
 								ImGui::SameLine();
-								ImGui::Checkbox("Enable Flip (F)", &g_Options.Ragebot.crouch_allowflip);
+								ImGui::Checkbox("fakehead", &g_Options.Ragebot.crouch_fakehead);
 								ImGui::Combo(XorStr("Pitch"), &g_Options.Ragebot.crouch_Pitch, antiaimpitch, ARRAYSIZE(antiaimpitch));
 								ImGui::SliderFloat(XorStr("Pitch Adder: "), &g_Options.Ragebot.crouch_PitchAdder, -180, 180, "%1.f");
 								ImGui::Separator();

@@ -13,6 +13,10 @@ using namespace std;
 #define TICK_INTERVAL			(g_Globals->interval_per_tick)
 #define TICKS_TO_TIME( t )		( g_Globals->interval_per_tick *( t ) )
 #define TIME_TO_TICKS( dt )		( (int)( 0.5f + (float)(dt) / TICK_INTERVAL ) )
+
+
+bool toggledab = false;
+
 ragebot::ragebot()
 {
 	IsLocked = false;
@@ -780,57 +784,57 @@ bool EdgeAntiAim(C_BaseEntity* pLocalBaseEntity, CInput::CUserCmd* cmd, float fl
 // AntiAim
 void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 {
+
+
+
 	C_BaseEntity* pLocal = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
 	CBaseCombatWeapon* pWeapon = (CBaseCombatWeapon*)g_EntityList->GetClientEntityFromHandle(pLocal->GetActiveWeaponHandle());
 
-	if (GetAsyncKeyState(0x46))  //maybe do GetAsyncKeyState(0x46) if this doesnt work  g_Options.Ragebot.flip_aa > 0 && G::PressedKeys[g_Options.Ragebot.flip_aa]
-	{
-		if (aa_left_right == 1) aa_left_right = 0;
-		else if (aa_left_right == 0) aa_left_right = 1;
-	}
+
+		
+		if (g_Options.Ragebot.flipkey > 0 && G::PressedKeys[g_Options.Ragebot.flipkey])
+		{
+			if (toggledab == false)
+			{
+				toggledab = true;
+				if (aa_left_right == 1) aa_left_right = 0;
+				else if (aa_left_right == 0) aa_left_right = 1;	
+			}
+		}
+		else
+		{
+			toggledab = false;
+		}
 
 	if (pLocal->GetMoveType() == MOVETYPE_WALK && pLocal->GetVelocity().Length2D() <= 135) // walking
 	{
 		//walk_ builder stuff
 		if (g_Options.Ragebot.AA_onWalk)
 		{
-			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.walk_BuilderAAs;
-			g_Options.Ragebot.Jitter = g_Options.Ragebot.walk_Jitter;
-			g_Options.Ragebot.FJitter = g_Options.Ragebot.walk_FJitter;
-			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.walk_LBYBreaker;
-			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.walk_BuilderReal;
-			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.walk_BuilderFake;
-			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.walk_BuilderPitch;
-			g_Options.Ragebot.JitterRange = g_Options.Ragebot.walk_JitterRange;
-			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.walk_FJitterRange;
+
+				g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.walk_BuilderAAs;
+				g_Options.Ragebot.Jitter = g_Options.Ragebot.walk_Jitter;
+				g_Options.Ragebot.FJitter = g_Options.Ragebot.walk_FJitter;
+				g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.walk_LBYBreaker;
+				g_Options.Ragebot.BuilderReal = g_Options.Ragebot.walk_BuilderReal;
+				g_Options.Ragebot.BuilderFake = g_Options.Ragebot.walk_BuilderFake;
+				g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.walk_BuilderPitch;
+				g_Options.Ragebot.JitterRange = g_Options.Ragebot.walk_JitterRange;
+				g_Options.Ragebot.FJitterRange = g_Options.Ragebot.walk_FJitterRange;
 
 
-			//prebuild stuff
-			g_Options.Ragebot.PreAAs = g_Options.Ragebot.walk_PreAAs;
-			g_Options.Ragebot.Pitch = g_Options.Ragebot.walk_Pitch;
-			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.walk_PitchAdder;
-			g_Options.Ragebot.YawTrue = g_Options.Ragebot.walk_YawTrue;
-			g_Options.Ragebot.YawFake = g_Options.Ragebot.walk_YawFake;
+				//prebuild stuff
+				g_Options.Ragebot.PreAAs = g_Options.Ragebot.walk_PreAAs;
+				g_Options.Ragebot.Pitch = g_Options.Ragebot.walk_Pitch;
+				g_Options.Ragebot.PitchAdder = g_Options.Ragebot.walk_PitchAdder;
+				g_Options.Ragebot.YawTrue = g_Options.Ragebot.walk_YawTrue;
+				g_Options.Ragebot.YawFake = g_Options.Ragebot.walk_YawFake;
 
 
-			if (g_Options.Ragebot.walk_allowflip && g_Options.Ragebot.walk_PreAAs)
-			{
-				if ((g_Options.Ragebot.walk_BuilderFake == 1) && (g_Options.Ragebot.walk_BuilderReal == 1))
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
-				}
-				else
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
-				}
-			}
-			else
-			{
+
 				g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.walk_YawTrueAdder;
 				g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.walk_YawFakeAdder;
-			}
+
 		}
 
 	}
@@ -839,42 +843,30 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 		//run_ builder stuff
 		if (g_Options.Ragebot.AA_onRun)
 		{
-			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.run_BuilderAAs;
-			g_Options.Ragebot.Jitter = g_Options.Ragebot.run_Jitter;
-			g_Options.Ragebot.FJitter = g_Options.Ragebot.run_FJitter;
-			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.run_LBYBreaker;
-			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.run_BuilderReal;
-			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.run_BuilderFake;
-			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.run_BuilderPitch;
-			g_Options.Ragebot.JitterRange = g_Options.Ragebot.run_JitterRange;
-			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.run_FJitterRange;
-
-			//prebuild stuff
-			g_Options.Ragebot.PreAAs = g_Options.Ragebot.run_PreAAs;
-			g_Options.Ragebot.Pitch = g_Options.Ragebot.run_Pitch;
-			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.run_PitchAdder;
-			g_Options.Ragebot.YawTrue = g_Options.Ragebot.run_YawTrue;
-			g_Options.Ragebot.YawFake = g_Options.Ragebot.run_YawFake;
 
 
-			if (g_Options.Ragebot.run_allowflip && g_Options.Ragebot.run_PreAAs)
-			{
-				if ((g_Options.Ragebot.run_BuilderFake == 1) && (g_Options.Ragebot.run_BuilderReal == 1))
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
-				}
-				else
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
-				}
-			}
-			else
-			{
+				g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.run_BuilderAAs;
+				g_Options.Ragebot.Jitter = g_Options.Ragebot.run_Jitter;
+				g_Options.Ragebot.FJitter = g_Options.Ragebot.run_FJitter;
+				g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.run_LBYBreaker;
+				g_Options.Ragebot.BuilderReal = g_Options.Ragebot.run_BuilderReal;
+				g_Options.Ragebot.BuilderFake = g_Options.Ragebot.run_BuilderFake;
+				g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.run_BuilderPitch;
+				g_Options.Ragebot.JitterRange = g_Options.Ragebot.run_JitterRange;
+				g_Options.Ragebot.FJitterRange = g_Options.Ragebot.run_FJitterRange;
+
+				//prebuild stuff
+				g_Options.Ragebot.PreAAs = g_Options.Ragebot.run_PreAAs;
+				g_Options.Ragebot.Pitch = g_Options.Ragebot.run_Pitch;
+				g_Options.Ragebot.PitchAdder = g_Options.Ragebot.run_PitchAdder;
+				g_Options.Ragebot.YawTrue = g_Options.Ragebot.run_YawTrue;
+				g_Options.Ragebot.YawFake = g_Options.Ragebot.run_YawFake;
+
+
+
 				g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.run_YawTrueAdder;
 				g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.run_YawFakeAdder;
-			}
+
 		}
 
 
@@ -884,42 +876,30 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 		//crouch_ builder stuff
 		if (g_Options.Ragebot.AA_onCrouch)
 		{
-			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.crouch_BuilderAAs;
-			g_Options.Ragebot.Jitter = g_Options.Ragebot.crouch_Jitter;
-			g_Options.Ragebot.FJitter = g_Options.Ragebot.crouch_FJitter;
-			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.crouch_LBYBreaker;
-			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.crouch_BuilderReal;
-			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.crouch_BuilderFake;
-			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.crouch_BuilderPitch;
-			g_Options.Ragebot.JitterRange = g_Options.Ragebot.crouch_JitterRange;
-			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.crouch_FJitterRange;
 
-			//prebuild stuff
-			g_Options.Ragebot.PreAAs = g_Options.Ragebot.crouch_PreAAs;
-			g_Options.Ragebot.Pitch = g_Options.Ragebot.crouch_Pitch;
-			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.crouch_PitchAdder;
-			g_Options.Ragebot.YawTrue = g_Options.Ragebot.crouch_YawTrue;
-			g_Options.Ragebot.YawFake = g_Options.Ragebot.crouch_YawFake;
-		
 
-			if (g_Options.Ragebot.crouch_allowflip && g_Options.Ragebot.crouch_PreAAs)
-			{
-				if ((g_Options.Ragebot.crouch_BuilderFake == 1) && (g_Options.Ragebot.crouch_BuilderReal == 1))
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
-				}
-				else
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
-				}
-			}
-			else
-			{
+				g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.crouch_BuilderAAs;
+				g_Options.Ragebot.Jitter = g_Options.Ragebot.crouch_Jitter;
+				g_Options.Ragebot.FJitter = g_Options.Ragebot.crouch_FJitter;
+				g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.crouch_LBYBreaker;
+				g_Options.Ragebot.BuilderReal = g_Options.Ragebot.crouch_BuilderReal;
+				g_Options.Ragebot.BuilderFake = g_Options.Ragebot.crouch_BuilderFake;
+				g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.crouch_BuilderPitch;
+				g_Options.Ragebot.JitterRange = g_Options.Ragebot.crouch_JitterRange;
+				g_Options.Ragebot.FJitterRange = g_Options.Ragebot.crouch_FJitterRange;
+
+				//prebuild stuff
+				g_Options.Ragebot.PreAAs = g_Options.Ragebot.crouch_PreAAs;
+				g_Options.Ragebot.Pitch = g_Options.Ragebot.crouch_Pitch;
+				g_Options.Ragebot.PitchAdder = g_Options.Ragebot.crouch_PitchAdder;
+				g_Options.Ragebot.YawTrue = g_Options.Ragebot.crouch_YawTrue;
+				g_Options.Ragebot.YawFake = g_Options.Ragebot.crouch_YawFake;
+
+
+
 				g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.crouch_YawTrueAdder;
 				g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.crouch_YawFakeAdder;
-			}
+
 		}
 	}
 	if (pLocal->GetVelocity().Length2D() < 20 == pLocal->GetVelocity().Length2D() > 0) //fakewalking
@@ -927,42 +907,29 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 		//fwalk_ builder stuff
 		if (g_Options.Ragebot.AA_onFakeWalk)
 		{
-			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.fwalk_BuilderAAs;
-			g_Options.Ragebot.Jitter = g_Options.Ragebot.fwalk_Jitter;
-			g_Options.Ragebot.FJitter = g_Options.Ragebot.fwalk_FJitter;
-			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.fwalk_LBYBreaker;
-			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.fwalk_BuilderReal;
-			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.fwalk_BuilderFake;
-			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.fwalk_BuilderPitch;
-			g_Options.Ragebot.JitterRange = g_Options.Ragebot.fwalk_JitterRange;
-			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.fwalk_FJitterRange;
 
-			//prebuild stuff
-			g_Options.Ragebot.PreAAs = g_Options.Ragebot.fwalk_PreAAs;
-			g_Options.Ragebot.Pitch = g_Options.Ragebot.fwalk_Pitch;
-			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.fwalk_PitchAdder;
-			g_Options.Ragebot.YawTrue = g_Options.Ragebot.fwalk_YawTrue;
-			g_Options.Ragebot.YawFake = g_Options.Ragebot.fwalk_YawFake;
-			
 
-			if (g_Options.Ragebot.fwalk_allowflip && g_Options.Ragebot.fwalk_PreAAs)
-			{
-				if ((g_Options.Ragebot.fwalk_BuilderFake == 1) && (g_Options.Ragebot.fwalk_BuilderReal == 1))
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
-				}
-				else
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
-				}
-			}
-			else
-			{
+				g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.fwalk_BuilderAAs;
+				g_Options.Ragebot.Jitter = g_Options.Ragebot.fwalk_Jitter;
+				g_Options.Ragebot.FJitter = g_Options.Ragebot.fwalk_FJitter;
+				g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.fwalk_LBYBreaker;
+				g_Options.Ragebot.BuilderReal = g_Options.Ragebot.fwalk_BuilderReal;
+				g_Options.Ragebot.BuilderFake = g_Options.Ragebot.fwalk_BuilderFake;
+				g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.fwalk_BuilderPitch;
+				g_Options.Ragebot.JitterRange = g_Options.Ragebot.fwalk_JitterRange;
+				g_Options.Ragebot.FJitterRange = g_Options.Ragebot.fwalk_FJitterRange;
+
+				//prebuild stuff
+				g_Options.Ragebot.PreAAs = g_Options.Ragebot.fwalk_PreAAs;
+				g_Options.Ragebot.Pitch = g_Options.Ragebot.fwalk_Pitch;
+				g_Options.Ragebot.PitchAdder = g_Options.Ragebot.fwalk_PitchAdder;
+				g_Options.Ragebot.YawTrue = g_Options.Ragebot.fwalk_YawTrue;
+				g_Options.Ragebot.YawFake = g_Options.Ragebot.fwalk_YawFake;
+
+
 				g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.fwalk_YawFakeAdder;
 				g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.fwalk_YawTrueAdder;
-			}
+
 		}
 	}
 	if (pLocal->GetVelocity().Length2D() == 0 && !(pCmd->buttons & IN_DUCK)) //standing still
@@ -970,46 +937,36 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 		//stand_ builder stuff 
 		if (g_Options.Ragebot.AA_onStand)
 		{
-			g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.stand_BuilderAAs;
-			g_Options.Ragebot.Jitter = g_Options.Ragebot.stand_Jitter;
-			g_Options.Ragebot.FJitter = g_Options.Ragebot.stand_FJitter;
-			g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.stand_LBYBreaker;
-			g_Options.Ragebot.BuilderReal = g_Options.Ragebot.stand_BuilderReal;
-			g_Options.Ragebot.BuilderFake = g_Options.Ragebot.stand_BuilderFake;
-			g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.stand_BuilderPitch;
-			g_Options.Ragebot.JitterRange = g_Options.Ragebot.stand_JitterRange;
-			g_Options.Ragebot.FJitterRange = g_Options.Ragebot.stand_FJitterRange;
-
-			//prebuild stuff
-			g_Options.Ragebot.PreAAs = g_Options.Ragebot.stand_PreAAs;
-			g_Options.Ragebot.Pitch = g_Options.Ragebot.stand_Pitch;
-			g_Options.Ragebot.PitchAdder = g_Options.Ragebot.stand_PitchAdder;
-			g_Options.Ragebot.YawTrue = g_Options.Ragebot.stand_YawTrue;
-			g_Options.Ragebot.YawFake = g_Options.Ragebot.stand_YawFake;
 
 
-			if (g_Options.Ragebot.stand_allowflip && g_Options.Ragebot.stand_PreAAs)
-			{
-				if ((g_Options.Ragebot.stand_BuilderFake == 1) && (g_Options.Ragebot.stand_BuilderReal == 1))
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -180.f; g_Options.Ragebot.YawFakeAdder = 0.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 0.f; g_Options.Ragebot.YawFakeAdder = -180.f;
-				}
-				else
-				{
-					if (aa_left_right == 0) g_Options.Ragebot.YawTrueAdder = -90.f; g_Options.Ragebot.YawFakeAdder = 90.f;
-					if (aa_left_right == 1) g_Options.Ragebot.YawTrueAdder = 90.f; g_Options.Ragebot.YawFakeAdder = -90.f;
-				}
-			}
-			else
-			{
+				g_Options.Ragebot.BuilderAAs = g_Options.Ragebot.stand_BuilderAAs;
+				g_Options.Ragebot.Jitter = g_Options.Ragebot.stand_Jitter;
+				g_Options.Ragebot.FJitter = g_Options.Ragebot.stand_FJitter;
+				g_Options.Ragebot.LBYBreaker = g_Options.Ragebot.stand_LBYBreaker;
+				g_Options.Ragebot.BuilderReal = g_Options.Ragebot.stand_BuilderReal;
+				g_Options.Ragebot.BuilderFake = g_Options.Ragebot.stand_BuilderFake;
+				g_Options.Ragebot.BuilderPitch = g_Options.Ragebot.stand_BuilderPitch;
+				g_Options.Ragebot.JitterRange = g_Options.Ragebot.stand_JitterRange;
+				g_Options.Ragebot.FJitterRange = g_Options.Ragebot.stand_FJitterRange;
+
+				//prebuild stuff
+				g_Options.Ragebot.PreAAs = g_Options.Ragebot.stand_PreAAs;
+				g_Options.Ragebot.Pitch = g_Options.Ragebot.stand_Pitch;
+				g_Options.Ragebot.PitchAdder = g_Options.Ragebot.stand_PitchAdder;
+				g_Options.Ragebot.YawTrue = g_Options.Ragebot.stand_YawTrue;
+				g_Options.Ragebot.YawFake = g_Options.Ragebot.stand_YawFake;
+
+
 				g_Options.Ragebot.YawTrueAdder = g_Options.Ragebot.stand_YawTrueAdder;
 				g_Options.Ragebot.YawFakeAdder = g_Options.Ragebot.stand_YawFakeAdder;
-			}
-			
+
 		}
 	}
 
+
+
+
+	
 
 	// If the aimbot is doing something don't do anything
 	if (pCmd->buttons & IN_ATTACK && CanAttack())
@@ -1066,6 +1023,9 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 	double yaw = fmod(static_cast<double>(server_time)*rate, 360.0);
 	double factor = 360.0 / M_PI;
 	factor *= 25;
+
+
+
 	switch (g_Options.Ragebot.YawTrue)
 	{
 	case 1: //sideways
@@ -1091,12 +1051,29 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 	break;
 	case 5:
 	{
-		SpinAngles.y = pLocal->GetLowerBodyYaw();
+		g_Engine->GetViewAngles(StartAngles);
+
+		
+
 	}
 	break;
 	case 6:
 	{
 		g_Engine->GetViewAngles(StartAngles);
+
+
+		if (aa_left_right == 0)
+		{
+			//45
+			g_Options.Ragebot.YawTrueAdder = 45;
+			//SpinAngles.y = StartAngles.y - 90.f;
+		}
+		else
+		{
+			//-135
+			g_Options.Ragebot.YawTrueAdder = -135;
+			//SpinAngles.y = StartAngles.y + 90.f;
+		}
 
 		static bool dir = false;
 
@@ -1356,23 +1333,27 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 	case 9:
 	{
 		g_Engine->GetViewAngles(StartAngles);
-
-		static int jitterangle = 0;
-
-		FakeAngles.y = StartAngles.y + 45 + RandomFloat(90, -90);
-		if (jitterangle <= 1)
+		if (aa_left_right == 0)
 		{
-			FakeAngles.y += StartAngles.y + 45 + RandomFloat(90, -90);
-			jitterangle += 1;
-		}
-		else if (jitterangle > 1 && jitterangle <= 3)
-		{
-			FakeAngles.y -= StartAngles.y - 45 - RandomFloat(90, -90);
-			jitterangle += 1;
+			if (Globals::shouldflip)
+			{
+				FakeAngles.y = StartAngles.y - 90.f;
+			}
+			else
+			{
+				FakeAngles.y = StartAngles.y + 90.f;
+			}
 		}
 		else
 		{
-			jitterangle = 0;
+			if (Globals::shouldflip)
+			{
+				FakeAngles.y = StartAngles.y + 90.f;
+			}
+			else
+			{
+				FakeAngles.y = StartAngles.y - 90.f;
+			}
 		}
 	}
 	break;
@@ -1384,6 +1365,7 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 			pCmd->viewangles.y = FakeAngles.y + g_Options.Ragebot.YawFakeAdder;
 		if (!Globals::ySwitch && g_Options.Ragebot.YawFake != 0)
 			pCmd->viewangles.y = SpinAngles.y + g_Options.Ragebot.YawTrueAdder;
+
 	}
 	else if (!g_Options.Ragebot.PreAAs && g_Options.Ragebot.BuilderAAs)
 	{
@@ -1522,54 +1504,39 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 		Globals::error = true;
 	}
 	*/
-	if (g_Options.Ragebot.run_PreAAs && g_Options.Ragebot.run_BuilderAAs)
+	if (g_Options.Ragebot.PreAAs && !g_Options.Ragebot.BuilderAAs)
 	{
-		Globals::error = true;
-		g_Options.Ragebot.error_type = 1;
-	}
-	if (g_Options.Ragebot.walk_PreAAs && g_Options.Ragebot.walk_BuilderAAs)
-	{
-		Globals::error = true;
-		g_Options.Ragebot.error_type = 2;
-	}
-	if (g_Options.Ragebot.crouch_PreAAs && g_Options.Ragebot.crouch_BuilderAAs)
-	{
-		Globals::error = true;
-		g_Options.Ragebot.error_type = 3;
-	}
-	if (g_Options.Ragebot.fwalk_PreAAs && g_Options.Ragebot.fwalk_BuilderAAs)
-	{
-		Globals::error = true;
-		g_Options.Ragebot.error_type = 4;
-	}
-	if (g_Options.Ragebot.stand_PreAAs && g_Options.Ragebot.stand_BuilderAAs)
-	{
-		Globals::error = true;
-		g_Options.Ragebot.error_type = 5;
+		switch (g_Options.Ragebot.Pitch)
+		{
+		case 0:
+			// No Pitch AA
+			break;
+		case 1:
+			// Down
+			pCmd->viewangles.x = 89 + g_Options.Ragebot.PitchAdder;
+			break;
+		case 2:
+			pCmd->viewangles.x = -89 + g_Options.Ragebot.PitchAdder;
+			break;
+		case 3:
+			pCmd->viewangles.x = -180 + g_Options.Ragebot.PitchAdder;
+			break;
+		case 4:
+			pCmd->viewangles.x = 180 + g_Options.Ragebot.PitchAdder;
+			break;
+		case 5:
+			if (Globals::shouldflip)
+			{
+				pCmd->viewangles.x = 60;
+			}
+			else if (!(Globals::shouldflip))
+			{
+				pCmd->viewangles.x = 89;
+			}
+			break;
+		}
 	}
 
-	switch (g_Options.Ragebot.Pitch && g_Options.Ragebot.PreAAs && !g_Options.Ragebot.BuilderAAs)
-	{
-	case 0:
-		// No Pitch AA
-		break;
-	case 1:
-		// Down
-		pCmd->viewangles.x = 89 + g_Options.Ragebot.PitchAdder;
-		break;
-	case 2:
-		pCmd->viewangles.x = -89 + g_Options.Ragebot.PitchAdder;
-		break;
-	case 3:
-		pCmd->viewangles.x = -180 + g_Options.Ragebot.PitchAdder;
-		break;
-	case 4:
-		pCmd->viewangles.x = 180 + g_Options.Ragebot.PitchAdder;
-		break;
-	case 5:
-		pCmd->viewangles.x = 1080 + g_Options.Ragebot.PitchAdder;
-		break;
-	}
 
 }
 

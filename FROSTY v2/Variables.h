@@ -182,6 +182,16 @@ struct Variables
 		bool walk_allowflip;
 		bool run_allowflip;
 		
+		int flipkey;
+
+		bool fakehead;
+
+		bool walk_fakehead;
+		bool run_fakehead;
+		bool crouch_fakehead;
+		bool fwalk_fakehead;
+		bool stand_fakehead;
+
 		int error_type;  //aa warning variable
 
 		bool	FriendlyFire;
