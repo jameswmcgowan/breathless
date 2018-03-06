@@ -62,7 +62,8 @@ const char* antiaimyawfake[] =
 	"Manual LBY Break",
 	"Forward Jitter",
 	"Jitter AA",
-	"fake head" //9
+	"fake head", //9
+	"local view"
 };
 
 const char* antiaimyawfakemove[] =

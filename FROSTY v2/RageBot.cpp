@@ -1053,13 +1053,6 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 	{
 		g_Engine->GetViewAngles(StartAngles);
 
-		
-
-	}
-	break;
-	case 6:
-	{
-		g_Engine->GetViewAngles(StartAngles);
 
 
 		if (aa_left_right == 0)
@@ -1074,6 +1067,43 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 			g_Options.Ragebot.YawTrueAdder = -135;
 			//SpinAngles.y = StartAngles.y + 90.f;
 		}
+
+		static bool dir = false;
+
+		if (GetAsyncKeyState(VK_LEFT)) dir = false; else if (GetAsyncKeyState(VK_RIGHT)) dir = true;
+
+		if (dir && pLocal->GetVelocity().Length2D() < 1)
+		{
+			if (Globals::shouldflip)
+			{
+				SpinAngles.y = StartAngles.y - 110;
+			}
+			else
+			{
+				SpinAngles.y = StartAngles.y + 135;
+			}
+		}
+		else if (!dir && pLocal->GetVelocity().Length2D() < 1)
+		{
+			if (Globals::shouldflip)
+			{
+				SpinAngles.y = StartAngles.y + 110;
+			}
+			else
+			{
+				SpinAngles.y = StartAngles.y - 135;
+			}
+		}
+		else if (pLocal->GetVelocity().Length2D() > 0)
+		{
+			SpinAngles.y = StartAngles.y + 180;
+		}
+
+	}
+	break;
+	case 6:
+	{
+		g_Engine->GetViewAngles(StartAngles);
 
 		static bool dir = false;
 
@@ -1355,6 +1385,13 @@ void ragebot::DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket)
 				FakeAngles.y = StartAngles.y - 90.f;
 			}
 		}
+	}
+	break;
+	case 10:
+	{
+		g_Engine->GetViewAngles(StartAngles);
+		FakeAngles.y = StartAngles.y;
+		g_Options.Ragebot.YawFakeAdder = 0;
 	}
 	break;
 	}
