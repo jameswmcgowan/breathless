@@ -118,7 +118,7 @@ void CConfig::Setup()
 	SetupValue(g_Options.Ragebot.AutoPistol, false, ("Ragebot"), ("AutoPistol"));
 	SetupValue(g_Options.Ragebot.KeyPress, 0, ("Ragebot"), ("Key"));
 
-
+	SetupValue(g_Options.Ragebot.flipkey, 1, ("Ragebot"), ("FlipKey"));
 	SetupValue(g_Options.Ragebot.EnabledAntiAim, false, ("Ragebot"), ("AntiaimEnabled"));
 	SetupValue(g_Options.Ragebot.PreAAs, false, ("Ragebot"), ("Pre-set-AAs"));
 	SetupValue(g_Options.Ragebot.Pitch, 0, ("Ragebot"), ("AntiaimPitch"));
