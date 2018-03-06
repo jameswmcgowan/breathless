@@ -27,11 +27,29 @@ void __stdcall CHLCreateMove(int sequence_number, float input_sample_frametime, 
 		float TickStuff = TICKS_TO_TIME(local->GetTickBase());
 		Globals::shouldflip = false;
 		bool moveFlip;
+		bool checkmove;
 		Globals::NextTime = next_time;
 
 		if (next_time - TICKS_TO_TIME(local->GetTickBase()) > 1.1) next_time = 0;
 
-		if (local->GetVelocity().Length2D() > 1) moveFlip = true;
+		//if (local->GetVelocity().Length2D() > 1) moveFlip = true;
+
+		if (local->GetVelocity().Length2D() > 1)
+		{
+			if (checkmove == false)
+			{
+				checkmove = true;
+				moveFlip = false;
+			}
+		}
+		else if (local->GetVelocity().Length2D() < 1)
+		{
+			if (checkmove == true)
+			{
+				checkmove = false;
+				moveFlip = true;
+			}
+		}
 
 		if (local->GetVelocity().Length2D() == 0 && !moveFlip)
 		{
@@ -41,7 +59,7 @@ void __stdcall CHLCreateMove(int sequence_number, float input_sample_frametime, 
 				Globals::shouldflip = true;
 			}
 		}
-		else if (moveFlip && local->GetVelocity().Length2D() == 0)
+		else if (moveFlip)
 		{
 			if (TickStuff > next_time + 0.22f) // 0.22
 			{
