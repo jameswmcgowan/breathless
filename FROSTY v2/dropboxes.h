@@ -23,7 +23,7 @@ const char* antiaimyawtrue[] =
 	"Slow Spin",
 	"Fast Spin",
 	"Backwards",
-	"fake head", // 5
+	"LBY Switch",
 	"Manual LBY Break",
 	"Back Jitter",
 	"Jitter LBY Break"
@@ -36,7 +36,7 @@ const char* antiaimyawtruemove[] =
 	"Slow Spin",
 	"Fast Spin",
 	"Backwards",
-	"fake head", //5
+	"LBY Switch",
 	"Manual AA",
 	"Back Jitter",
 };
@@ -62,7 +62,7 @@ const char* antiaimyawfake[] =
 	"Manual LBY Break",
 	"Forward Jitter",
 	"Jitter AA",
-	"fake head" //9
+	"LBY Jitter"
 };
 
 const char* antiaimyawfakemove[] =
@@ -76,7 +76,7 @@ const char* antiaimyawfakemove[] =
 	"Manual LBY Break",
 	"Forward Jitter",
 	"Jitter AA",
-	"fake head" //9
+	"LBY Jitter"
 };
 
 const char* antiaimpitch[] =
@@ -86,7 +86,7 @@ const char* antiaimpitch[] =
 	"Up",
 	"Fake Up",
 	"Fake Down",
-	"fake head"
+	"Fake Zero"
 };
 
 const char* handd[] =
