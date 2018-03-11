@@ -10,7 +10,8 @@ bool unload;
 
 bool on_dll_attach(void* base)
 {
-	//U::OpenConsole("FROSTY.PW");
+	U::OpenConsole("supremacy.gq");
+	
 	InitialiseInterfaces();
 	g_Netvars->GetNetvars();
 	g_Render->SetupFonts();

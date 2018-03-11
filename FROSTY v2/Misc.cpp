@@ -27,127 +27,12 @@ void misc::OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local)
 
 	if (g_Options.Misc.moonwalk)
 	{
-		if (local->GetMoveType() == MOVETYPE_LADDER || local->GetMoveType() == MOVETYPE_NOCLIP)
-			return;
-
-		if (cmd->buttons & IN_FORWARD && cmd->buttons & IN_BACK)
-		{
-			cmd->forwardmove = 0.f;
-		}
-		else if (cmd->buttons & IN_FORWARD)
-		{
-			cmd->buttons &= ~IN_FORWARD;
-			cmd->buttons |= IN_BACK;
-			cmd->forwardmove = 450.f;
-		}
-		else if (cmd->buttons & IN_BACK)
-		{
-			cmd->buttons &= ~IN_BACK;
-			cmd->buttons |= IN_FORWARD;
-			cmd->forwardmove = -450.f;
-		}
-
-		if (cmd->buttons & IN_MOVELEFT && cmd->buttons & IN_MOVERIGHT)
-		{
-			cmd->sidemove = 0.f;
-		}
-		else if (cmd->buttons & IN_MOVELEFT)
-		{
-			cmd->buttons &= ~IN_MOVELEFT;
-			cmd->buttons |= IN_MOVERIGHT;
-			cmd->sidemove = -450.f;
-		}
-		else if (cmd->buttons & IN_MOVERIGHT)
-		{
-			cmd->buttons &= ~IN_MOVERIGHT;
-			cmd->buttons |= IN_MOVELEFT;
-			cmd->sidemove = 450.f;
-		}
+		//removed cuz antipasta
 	}
-
 
 	if (g_Options.Misc.spookwalk)
 	{
-
-
-		if (switchstate == 3) positive = true;
-		if (switchstate == -3) positive = false;
-		
-		if (positive)
-		{
-			switchstate -= 1;
-		}
-		else
-		{
-			switchstate += 1;
-		}
-
-		if (local->GetMoveType() == MOVETYPE_LADDER || local->GetMoveType() == MOVETYPE_NOCLIP || cmd->buttons & IN_JUMP)
-			return;
-
-		if (cmd->buttons & IN_FORWARD && cmd->buttons & IN_BACK)
-		{
-			cmd->sidemove = 0.f;
-		}
-		if (cmd->buttons & IN_MOVELEFT && cmd->buttons & IN_MOVERIGHT)
-		{
-			cmd->forwardmove = 0.f;
-		}
-
-		if (cmd->buttons & IN_FORWARD && !(cmd->buttons & IN_BACK || cmd->buttons & IN_MOVELEFT || cmd->buttons & IN_MOVERIGHT))
-		{
-			if (switchstate < 0)
-			{
-
-				cmd->sidemove = -450.f;
-			}
-			else if (switchstate > 0)
-			{
-
-				cmd->sidemove = 450.f;
-			}
-		}
-
-		if (cmd->buttons & IN_BACK && !(cmd->buttons & IN_FORWARD || cmd->buttons & IN_MOVELEFT || cmd->buttons & IN_MOVERIGHT))
-		{
-			if (switchstate < 0)
-			{
-
-				cmd->sidemove = -450.f;
-			}
-			else if (switchstate > 0)
-			{
-
-				cmd->sidemove = 450.f;
-			}
-		}
-
-		if (cmd->buttons & IN_MOVELEFT && !(cmd->buttons & IN_FORWARD || cmd->buttons & IN_BACK || cmd->buttons & IN_MOVERIGHT))
-		{
-			if (switchstate < 0)
-			{
-				cmd->forwardmove = -450.f;
-			}
-			else if (switchstate > 0)
-			{
-				cmd->forwardmove = 450.f;
-			}
-		}
-
-		if (cmd->buttons & IN_MOVERIGHT && !(cmd->buttons & IN_FORWARD || cmd->buttons & IN_BACK || cmd->buttons & IN_MOVELEFT))
-		{
-			if (switchstate < 0)
-			{
-
-				cmd->forwardmove = -450.f;
-			}
-			else if (switchstate > 0)
-			{
-
-				cmd->forwardmove = 450.f;
-			}
-		}
-
+		//removed cuz antipasta
 	}
 
 
